@@ -15,7 +15,7 @@
         tools:context=".LoginActivity">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/greyBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -29,7 +29,7 @@
             android:background="@drawable/rectangle18" />
 
         <TextView
-            android:id="@+id/blueBackgroundTextView"
+            android:id="@+id/blueBackground"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_alignParentStart="true"
@@ -43,7 +43,7 @@
             android:background="@drawable/rectangle17" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/imageViewCreatePost"
             android:layout_width="300dp"
             android:layout_height="170dp"
             android:layout_alignParentStart="true"
@@ -74,7 +74,7 @@
             android:textSize="36sp" />
 
         <EditText
-            android:id="@+id/editTextTitle"
+            android:id="@+id/postTitleEditText"
             android:layout_width="wrap_content"
             android:layout_height="57dp"
             android:layout_alignParentStart="true"
@@ -92,6 +92,27 @@
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
             android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/bodyTextEditText"
+            android:layout_width="365dp"
+            android:layout_height="161dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="396dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="173dp"
+            android:background="@drawable/rectanglebodytext"
+            android:ems="10"
+            android:fontFamily="@font/bebas_regular"
+            android:gravity="start|top"
+            android:hint="Body Text"
+            android:inputType="textMultiLine"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp" />
 
         <Button
             android:id="@+id/createPostButton"
@@ -115,27 +136,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.718" />
-
-        <EditText
-            android:id="@+id/editTextTextMultiLine"
-            android:layout_width="365dp"
-            android:layout_height="161dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="396dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="173dp"
-            android:background="@drawable/rectanglebodytext"
-            android:ems="10"
-            android:fontFamily="@font/bebas_regular"
-            android:gravity="start|top"
-            android:hint="Body Text"
-            android:inputType="textMultiLine"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp" />
 
 
     </RelativeLayout>
