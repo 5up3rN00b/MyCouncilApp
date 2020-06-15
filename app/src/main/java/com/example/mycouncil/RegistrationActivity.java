@@ -77,8 +77,8 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 spinner.setVisibility(View.VISIBLE);
-                mPolitican.setBackgroundResource(R.drawable.political_color);
-                mPolitican.setTextColor(Color.WHITE);
+                mPolitician.setBackgroundResource(R.drawable.political_color);
+                mPolitician.setTextColor(Color.WHITE);
                 mCitizen.setBackgroundResource(R.drawable.citizen);
                 mCitizen.setTextColor(Color.parseColor("#707070"));
             }
@@ -88,8 +88,8 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 spinner.setVisibility(View.GONE);
-                mPolitican.setBackgroundResource(R.drawable.citizen);
-                mPolitican.setTextColor(Color.parseColor("#707070"));
+                mPolitician.setBackgroundResource(R.drawable.citizen);
+                mPolitician.setTextColor(Color.parseColor("#707070"));
                 mCitizen.setBackgroundResource(R.drawable.political_color);
                 mCitizen.setTextColor(Color.WHITE);
             }
