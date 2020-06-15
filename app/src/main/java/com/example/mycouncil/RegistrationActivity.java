@@ -1,8 +1,12 @@
 package com.example.mycouncil;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,9 +36,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         mPolitican.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
                 spinner.setVisibility(View.VISIBLE);
+                mPolitican.setBackgroundResource(R.drawable.political_color);
+                mPolitican.setTextColor(Color.WHITE);
+                mCitizen.setBackgroundResource(R.drawable.citizen);
+                mCitizen.setTextColor(Color.parseColor("#707070"));
             }
         });
 
@@ -42,6 +51,10 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 spinner.setVisibility(View.GONE);
+                mPolitican.setBackgroundResource(R.drawable.citizen);
+                mPolitican.setTextColor(Color.parseColor("#707070"));
+                mCitizen.setBackgroundResource(R.drawable.political_color);
+                mCitizen.setTextColor(Color.WHITE);
             }
         });
         mHome.setOnClickListener(new View.OnClickListener() {
