@@ -8,4 +8,10 @@
         <item>Mayor</item>
         <item>Education Department</item>
     </string-array>>
+    <string-array name = "postCategories">
+        <item>Police Department</item>
+        <item>Fire Department</item>
+        <item>Mayor</item>
+        <item>Education Department</item>
+    </string-array>>
 </resources>
