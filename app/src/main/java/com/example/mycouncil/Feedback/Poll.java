@@ -3,19 +3,23 @@ package com.example.mycouncil.Feedback;
 import java.util.ArrayList;
 
 public class Poll {
-    private String question;
-    private ArrayList<String> choices;
+    private String title;
+    private ArrayList<Choice> choices;
 
-    public Poll(String question, ArrayList<String> choices) {
-        this.question = question;
+    public Poll(String title, ArrayList<Choice> choices) {
+        this.title = title;
         this.choices = choices;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getTitle() {
+        return title;
     }
 
-    public ArrayList<String> getChoices() {
+    public ArrayList<Choice> getChoices() {
         return choices;
+    }
+
+    public Choice getChoice(int index) {
+        return choices.get(index);
     }
 }
