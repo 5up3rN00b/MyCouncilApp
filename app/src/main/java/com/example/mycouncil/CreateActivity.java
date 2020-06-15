@@ -16,15 +16,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 public class CreateActivity extends AppCompatActivity {
-
-    Button mBack;
+    
     DrawerLayout d1;
     ActionBarDrawerToggle abdt;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create);
+        setContentView(R.layout.activity_poll);
 
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
@@ -62,14 +61,6 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
 
-        mBack = findViewById(R.id.back);
-
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-            }
-        });
     }
 
     @Override
