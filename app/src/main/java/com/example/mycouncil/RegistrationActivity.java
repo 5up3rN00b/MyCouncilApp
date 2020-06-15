@@ -9,9 +9,11 @@ import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Spinner;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
@@ -29,8 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrationActivity extends AppCompatActivity {
-
-    private Button mHome, mLogin, mRegister;
+    Button mHome, mLogin, mCitizen, mPolitician, mRegister;
     private EditText zipcode, first_name, last_name, email, password;
     private static final String TAG = "RegistrationActivity";
 
@@ -52,7 +53,29 @@ public class RegistrationActivity extends AppCompatActivity {
         // TODO New thread
 //        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 //        StrictMode.setThreadPolicy(policy);
+        mCitizen = findViewById(R.id.citizen);
+        mPolitician = findViewById(R.id.political_figure);
 
+        final Spinner spinner = findViewById(R.id.jobs);
+        spinner.setVisibility(View.GONE);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.jobs, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+
+        mPolitician.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spinner.setVisibility(View.VISIBLE);
+            }
+        });
+
+        mCitizen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spinner.setVisibility(View.GONE);
+            }
+        });
         mHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
