@@ -26,9 +26,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        mLogout = findViewById(R.id.logout);
-        mBranch = findViewById(R.id.branch);
-        mCreate = findViewById(R.id.create);
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
 
