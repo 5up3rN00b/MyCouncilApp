@@ -16,7 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 public class CreateActivity extends AppCompatActivity {
-    
+
     DrawerLayout d1;
     ActionBarDrawerToggle abdt;
 
