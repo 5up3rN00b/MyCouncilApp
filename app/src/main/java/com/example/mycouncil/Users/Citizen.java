@@ -1,7 +1,7 @@
 package com.example.mycouncil.Users;
 
 public class Citizen implements User {
-    private String firstName, lastName;
+    private String firstName, lastName, email;
     private int zipCode;
 
     public Citizen(String firstName, String lastName, int zipCode) {
