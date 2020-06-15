@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="413dp"
+        android:layout_height="254dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/pictures" />
+
     <Button
         android:id="@+id/home"
         android:layout_width="wrap_content"
@@ -14,10 +26,10 @@
         android:text="Home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.712"
+        app:layout_constraintHorizontal_bias="0.321"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <Button
         android:id="@+id/login"
@@ -26,10 +38,10 @@
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
 
@@ -53,7 +65,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.413"
+        app:layout_constraintVertical_bias="0.376"
         app:srcCompat="@drawable/register" />
 
     <EditText
@@ -137,12 +149,13 @@
         app:layout_constraintVertical_bias="0.645" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/political_figure"
         android:layout_width="158dp"
         android:layout_height="38dp"
         android:background="@drawable/citizen"
         android:fontFamily="@font/bebas_regular"
-        android:text="Polticial Figure"
+        android:text="Political Figure"
+        android:textColor="#707070"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,12 +165,13 @@
         app:layout_constraintVertical_bias="0.808" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/citizen"
         android:layout_width="158dp"
         android:layout_height="38dp"
         android:background="@drawable/citizen"
         android:fontFamily="@font/bebas_regular"
         android:text="Citizen"
+        android:textColor="#707070"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,5 +179,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.808" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="139dp"
+        android:layout_height="54dp"
+        android:background="@drawable/register_button"
+        android:fontFamily="@font/bebas_regular"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
