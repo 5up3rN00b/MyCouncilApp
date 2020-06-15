@@ -2,4 +2,10 @@
     <string name="app_name">MyCouncil</string>
     <string name="Open">MyCouncil</string>
     <string name="Close">MyCouncil</string>
+    <string-array name = "jobs">
+        <item>Police Department</item>
+        <item>Fire Department</item>
+        <item>Mayor</item>
+        <item>Education Department</item>
+    </string-array>>
 </resources>
