@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyCouncil</string>
+    <string name="Open">MyCouncil</string>
+    <string name="Close">MyCouncil</string>
 </resources>
