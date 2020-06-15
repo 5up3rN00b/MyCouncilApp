@@ -70,7 +70,7 @@
         app:srcCompat="@drawable/login" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/loginEmailAddress"
         android:layout_width="335dp"
         android:layout_height="50dp"
         android:background="@drawable/rectangle_1"
@@ -97,7 +97,7 @@
         app:srcCompat="@drawable/iconioniciosperson" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/loginPassword"
         android:layout_width="335dp"
         android:layout_height="50dp"
         android:background="@drawable/rectangle_2"
@@ -124,7 +124,7 @@
         app:srcCompat="@drawable/iconawesomelock" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginButton"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:background="@drawable/path1"

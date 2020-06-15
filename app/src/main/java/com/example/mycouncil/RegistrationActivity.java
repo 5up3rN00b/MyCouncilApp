@@ -35,6 +35,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText zipcode, first_name, last_name, email, password;
     private static final String TAG = "RegistrationActivity";
 
+    public static String zipcodeText, first_nameText, last_nameText, emailText, passwordText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +88,11 @@ public class RegistrationActivity extends AppCompatActivity {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                zipcodeText = zipcode.getText().toString();
+                first_nameText = first_name.getText().toString();
+                last_nameText = last_name.getText().toString();
+                emailText = email.getText().toString();
+                passwordText = password.getText().toString();
                 new PostTask().execute();
             }
         });
@@ -101,16 +108,13 @@ public class RegistrationActivity extends AppCompatActivity {
                 HttpPost httppost = new HttpPost("http://73.71.24.214:8008/users/add.php");
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>(5);
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        params.add(new BasicNameValuePair("zipcode", zipcode.getText().toString()));
-                        params.add(new BasicNameValuePair("first-name", first_name.getText().toString()));
-                        params.add(new BasicNameValuePair("last-name", last_name.getText().toString()));
-                        params.add(new BasicNameValuePair("email", email.getText().toString()));
-                        params.add(new BasicNameValuePair("password", password.getText().toString()));
-                    }
-                });
+                params.add(new BasicNameValuePair("zipcode", RegistrationActivity.zipcodeText));
+                params.add(new BasicNameValuePair("first-name", RegistrationActivity.first_nameText));
+                params.add(new BasicNameValuePair("last-name", RegistrationActivity.last_nameText));
+                params.add(new BasicNameValuePair("email", RegistrationActivity.emailText));
+                params.add(new BasicNameValuePair("password", RegistrationActivity.passwordText));
                 httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+                System.out.println(params);
 
                 //Execute and get the response.
                 HttpResponse response = httpclient.execute(httppost);
@@ -127,12 +131,11 @@ public class RegistrationActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            Log.d(TAG, text);
             if (text.equals("Registered successfully")) {
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             } else {
-                Toast.makeText(RegistrationActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistrationActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
             }
         }
     }
