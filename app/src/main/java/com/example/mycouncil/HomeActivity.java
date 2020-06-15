@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         d1.addDrawerListener(abdt);
         abdt.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
 

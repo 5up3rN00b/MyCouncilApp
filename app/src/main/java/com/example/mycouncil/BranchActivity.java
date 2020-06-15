@@ -28,7 +28,7 @@ public class BranchActivity extends AppCompatActivity {
 
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         abdt.setDrawerIndicatorEnabled(true);
 
         d1.addDrawerListener(abdt);
