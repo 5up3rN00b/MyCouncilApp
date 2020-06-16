@@ -23,8 +23,8 @@ public class CreateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_poll);
-
+        //setContentView(R.layout.activity_poll);
+        setContentView(R.layout.activity_post);
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
 

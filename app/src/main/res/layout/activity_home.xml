@@ -43,6 +43,20 @@
         android:layout_marginBottom="523dp"
         android:background="@drawable/rectangle17" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="300dp"
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="544dp"
+        app:srcCompat="@drawable/mycouncilhome" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,20 +68,6 @@
         android:layout_marginTop="209dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="92dp" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="300dp"
-        android:layout_height="170dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="545dp"
-        app:srcCompat="@drawable/mycouncilhome" />
 
 </RelativeLayout>
 
