@@ -14,18 +14,18 @@
         tools:context=".LoginActivity">
 
 
-<!--        <TextView-->
-<!--            android:id="@+id/greyBackground"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:background="@drawable/rectangle18"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/blueBackground" />-->
+        <TextView
+            android:id="@+id/greyBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/rectangle18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/blueBackground" />
 
         <TextView
             android:id="@+id/blueBackground"
@@ -43,6 +43,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
+
         <ImageView
             android:id="@+id/imageViewCreatePost"
             android:layout_width="300dp"
@@ -56,9 +57,8 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/blueBackground"
-            app:layout_constraintVertical_bias="0.028"
+            app:layout_constraintVertical_bias="0.027"
             app:srcCompat="@drawable/mycouncilcreate" />
-
 
         <TextView
             android:id="@+id/createPostTextView"
