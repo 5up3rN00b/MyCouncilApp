@@ -112,6 +112,13 @@ public class RegistrationActivity extends AppCompatActivity {
                 new PostTask().execute();
             }
         });
+
+        mLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            }
+        });
     }
 
     class PostTask extends AsyncTask<Void, Void, Void> {
