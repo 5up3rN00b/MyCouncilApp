@@ -6,55 +6,59 @@
     android:id="@+id/d1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".CreateActivity">
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity">
 
-        <TextView
-            android:id="@+id/greyBackground"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="-1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/rectangle18" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/greyBackground"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:background="@drawable/rectangle18"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/blueBackground" />-->
 
         <TextView
             android:id="@+id/blueBackground"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="520dp"
-            android:background="@drawable/rectangle17" />
-
-        <ImageView
-            android:id="@+id/imageViewCreatePost"
-            android:layout_width="300dp"
+            android:layout_width="419dp"
             android:layout_height="170dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="500dp"
+            android:background="@drawable/rectangle17"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageViewCreatePost"
+            android:layout_width="300dp"
+            android:layout_height="143dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/blueBackground"
+            app:layout_constraintVertical_bias="0.028"
             app:srcCompat="@drawable/mycouncilcreate" />
+
 
         <TextView
             android:id="@+id/createPostTextView"
@@ -64,14 +68,16 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="118dp"
-            android:layout_marginTop="234dp"
-            android:layout_marginEnd="120dp"
-            android:layout_marginBottom="441dp"
             android:fontFamily="@font/bebasneue_regular"
             android:text="Create Post"
             android:textAlignment="center"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/postTitleEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.915" />
 
         <EditText
             android:id="@+id/postTitleEditText"
@@ -81,51 +87,22 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="54dp"
-            android:layout_marginTop="288dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="386dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="248dp"
             android:background="@drawable/political_figure"
             android:ems="10"
             android:fontFamily="@font/bebasneue_regular"
             android:hint="Title"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/bodyTextEditText"
-            android:layout_width="365dp"
-            android:layout_height="161dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="396dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="173dp"
-            android:background="@drawable/rectanglebodytext"
-            android:ems="10"
-            android:fontFamily="@font/bebas_regular"
-            android:gravity="start|top"
-            android:hint="Body Text"
-            android:inputType="textMultiLine"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp" />
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/createPostButton"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="131dp"
-            android:layout_marginTop="640dp"
-            android:layout_marginEnd="130dp"
-            android:layout_marginBottom="31dp"
             android:background="@drawable/path1"
             android:fontFamily="@font/bebasneue_regular"
             android:text="Create"
@@ -133,12 +110,36 @@
             android:textSize="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.718" />
+            app:layout_constraintVertical_bias="0.938" />
+
+        <EditText
+            android:id="@+id/bodyTextEditText"
+            android:layout_width="370dp"
+            android:layout_height="203dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/rectanglebodytext"
+            android:ems="10"
+            android:fontFamily="@font/bebas_regular"
+            android:gravity="start|top"
+            android:hint="Body Text"
+            android:inputType="textMultiLine"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/createPostButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/postTitleEditText"
+            app:layout_constraintVertical_bias="0.518" />
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
