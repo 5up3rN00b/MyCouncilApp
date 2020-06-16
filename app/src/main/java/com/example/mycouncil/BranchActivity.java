@@ -43,15 +43,15 @@ public class BranchActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 if (id == R.id.home){
-                    Toast.makeText(BranchActivity.this, "Home", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(BranchActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class ));
                 }
                 if (id == R.id.branches){
-                    Toast.makeText(BranchActivity.this, "Branches", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(BranchActivity.this, "Branches", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), BranchActivity.class ));
                 }
                 if (id == R.id.post){
-                    Toast.makeText(BranchActivity.this, "Post", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(BranchActivity.this, "Post", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), CreateActivity.class ));
                 }
                 if (id == R.id.logout){

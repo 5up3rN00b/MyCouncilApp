@@ -42,15 +42,15 @@ public class CreateActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 if (id == R.id.home){
-                    Toast.makeText(CreateActivity.this, "Home", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(CreateActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class ));
                 }
                 if (id == R.id.branches){
-                    Toast.makeText(CreateActivity.this, "Branches", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(CreateActivity.this, "Branches", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), BranchActivity.class ));
                 }
                 if (id == R.id.post){
-                    Toast.makeText(CreateActivity.this, "Post", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(CreateActivity.this, "Post", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), CreateActivity.class ));
                 }
                 if (id == R.id.logout){
