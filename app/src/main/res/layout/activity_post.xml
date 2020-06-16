@@ -23,9 +23,12 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:background="@drawable/rectangle18"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/blueBackground" />
+            app:layout_constraintTop_toTopOf="@+id/blueBackground"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/blueBackground"
@@ -72,32 +75,34 @@
             android:text="Create Post"
             android:textAlignment="center"
             android:textSize="36sp"
-            app:layout_constraintBottom_toTopOf="@+id/postTitleEditText"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.915" />
+            app:layout_constraintVertical_bias="0.302" />
 
         <EditText
             android:id="@+id/postTitleEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="57dp"
+            android:layout_width="367dp"
+            android:layout_height="49dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="248dp"
-            android:background="@drawable/political_figure"
+            android:background="@drawable/rectangle_1"
             android:ems="10"
             android:fontFamily="@font/bebasneue_regular"
             android:hint="Title"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
             android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.426" />
 
         <Button
             android:id="@+id/createPostButton"
@@ -125,18 +130,18 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/rectanglebodytext"
             android:ems="10"
-            android:fontFamily="@font/bebas_regular"
+            android:fontFamily="@font/exo"
             android:gravity="start|top"
             android:hint="Body Text"
             android:inputType="textMultiLine"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
+            android:padding="10dp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/createPostButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/postTitleEditText"
-            app:layout_constraintVertical_bias="0.518" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.911" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
