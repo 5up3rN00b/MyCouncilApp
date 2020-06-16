@@ -24,6 +24,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/rectangle18"
+
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
