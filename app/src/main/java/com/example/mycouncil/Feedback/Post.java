@@ -31,8 +31,16 @@ public class Post {
         upvotes++;
     }
 
+    public void subUpvotes(){
+        upvotes--;
+    }
+
     public void addDownvotes(){
         downvotes++;
+    }
+
+    public void subDownvotes(){
+        downvotes--;
     }
     public int getTotalvotes(){
         return upvotes - downvotes;

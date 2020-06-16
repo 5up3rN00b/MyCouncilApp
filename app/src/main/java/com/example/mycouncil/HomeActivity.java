@@ -130,20 +130,54 @@ public class HomeActivity extends AppCompatActivity {
             bodyText.setText(body);
             name.setText("Jeff Bezos");
             //branchName.setText("Police");
-
+            final boolean[] downisBlue = {false};
+            final boolean[]  upisClicked = {false};
             upvote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    list.get(position).addUpvotes();
+                    downvote.setBackgroundResource(R.drawable.arrowdown);
+                    if(downisBlue[0]){
+                        list.get(position).subDownvotes();
+                    }
+                    downisBlue[0] = false;
+                    if(upisClicked[0]){
+                        list.get(position).subUpvotes();
+                        upvote.setBackgroundResource(R.drawable.arrowup);
+                        upisClicked[0] = false;
+                    } else{
+                        list.get(position).addUpvotes();
+                        upvote.setBackgroundResource(R.drawable.arrowup_blue);
+                        upisClicked[0] = true;
+                    }
+                    System.out.println("Upvotes: " + list.get(position).getUpvotes());
+                    System.out.println("Total: " + list.get(position).getTotalvotes());
                 }
             });
 
             downvote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    list.get(position).addDownvotes();
+                    upvote.setBackgroundResource(R.drawable.arrowup);
+                    if(upisClicked[0]){
+                        list.get(position).subUpvotes();
+                    }
+                    upisClicked[0] = false;
+
+                    if(downisBlue[0]){
+                        list.get(position).subDownvotes();
+                        downvote.setBackgroundResource(R.drawable.arrowdown);
+                        downisBlue[0] = false;
+                    } else{
+                        list.get(position).addDownvotes();
+
+                        downvote.setBackgroundResource(R.drawable.arrowdown_blue);
+                        downisBlue[0] = true;
+                    }
+                    System.out.println("Downvotes: " + list.get(position).getDownvotes());
+                    System.out.println("Total: " + list.get(position).getTotalvotes());
                 }
             });
+
 
             return convertView;
 
