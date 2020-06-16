@@ -11,7 +11,9 @@
     <string-array name = "postCategories">
         <item>Police Department</item>
         <item>Fire Department</item>
-        <item>Mayor</item>
+        <item>City Council</item>
         <item>Education Department</item>
     </string-array>>
+
+
 </resources>
