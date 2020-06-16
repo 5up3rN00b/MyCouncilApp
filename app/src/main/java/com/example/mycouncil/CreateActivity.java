@@ -1,10 +1,16 @@
 package com.example.mycouncil;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,12 +19,19 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.mycouncil.Feedback.Post;
 import com.google.android.material.navigation.NavigationView;
 
-public class CreateActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
+import static com.example.mycouncil.HomeActivity.postList;
+
+public class CreateActivity extends AppCompatActivity {
+    Button mCreate;
     DrawerLayout d1;
     ActionBarDrawerToggle abdt;
+    EditText title, bodyText;
+    String theTitle, body;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +45,21 @@ public class CreateActivity extends AppCompatActivity {
 
         d1.addDrawerListener(abdt);
         abdt.syncState();
+
+        title = findViewById(R.id.postTitleEditText);
+        bodyText = findViewById(R.id.bodyTextEditText);
+
+        mCreate = findViewById(R.id.createPostButton);
+        mCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                theTitle = title.getText().toString();
+                body = bodyText.getText().toString();
+                postList.add(new Post(theTitle, body, 0,0));
+                title.setText("");
+                bodyText.setText("");
+            }
+        });
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -61,10 +89,13 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
+
+
 }
