@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="380dp"
+    android:layout_height="456dp"
+    android:background="#00FFFFFF"
     android:orientation="vertical"
     android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:orientation="horizontal"
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/profilePictureImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/sym_def_app_icon" />
 
         <LinearLayout
-            android:layout_width="131dp"
+            android:layout_width="130dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/namePostTextView"
                 android:layout_width="130dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/bebas_regular"
                 android:gravity="center_vertical"
                 android:paddingLeft="5dp"
@@ -45,9 +47,10 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/branchNamePostTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/bebas_regular"
                 android:gravity="center_vertical|right"
                 android:paddingRight="5dp"
@@ -63,10 +66,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/postTitleTextView"
             android:layout_width="348dp"
             android:layout_height="57dp"
             android:layout_weight="1"
+            android:background="#FFFFFF"
             android:fontFamily="@font/bebasneue_bold"
             android:paddingLeft="15dp"
             android:text="Post Title"
@@ -76,7 +80,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="185dp"
+        android:layout_height="226dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -86,15 +90,54 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/postBodyTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/exo"
-                android:paddingLeft="15dp"
+                android:padding="15dp"
                 android:text="TextView"
                 android:textSize="16sp"
                 tools:text="Lorem Ipsum" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="379dp"
+        android:layout_height="39dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="35dp"
+            android:layout_height="38dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/upvote"
+                android:layout_width="34dp"
+                android:layout_height="38dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/arrowup"
+                android:paddingTop="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="37dp"
+            android:layout_height="38dp"
+            android:background="#FFFFFF"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/downvote"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/arrowdown"
+                android:paddingTop="10dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

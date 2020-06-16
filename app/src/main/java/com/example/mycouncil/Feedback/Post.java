@@ -26,4 +26,15 @@ public class Post {
     public int getDownvotes() {
         return downvotes;
     }
+
+    public void addUpvotes(){
+        upvotes++;
+    }
+
+    public void addDownvotes(){
+        downvotes++;
+    }
+    public int getTotalvotes(){
+        return upvotes - downvotes;
+    }
 }
