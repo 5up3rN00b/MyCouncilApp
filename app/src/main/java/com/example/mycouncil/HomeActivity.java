@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,13 +22,20 @@ public class HomeActivity extends AppCompatActivity {
     Button mLogout;
     DrawerLayout d1;
     ActionBarDrawerToggle abdt;
+    ListView homeListView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
+        homeListView = findViewById(R.id.homeListView);
+        homeListView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
 
         d1 =findViewById(R.id.d1);
