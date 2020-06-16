@@ -6,13 +6,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".BranchActivity"
     android:id="@+id/d1"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".LoginActivity">
+
+
 
         <TextView
             android:id="@+id/greyBackground"
@@ -22,26 +26,25 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="-2dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/rectangle18" />
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rectangle18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/blueBackground"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="414dp"
+            android:layout_height="198dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="520dp"
-            android:background="@drawable/rectangle17" />
-
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/rectangle17"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/back"
@@ -54,10 +57,10 @@
             android:text="Back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.393" />
+            app:layout_constraintVertical_bias="0.995" />
 
         <ImageView
             android:id="@+id/imageView8"
@@ -67,10 +70,11 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="600dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.026"
             app:srcCompat="@drawable/mycouncil" />
 
         <TextView
@@ -81,14 +85,16 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="550dp"
             android:fontFamily="@font/bebas_regular"
             android:text="Police Department"
             android:textColor="#FFFFFF"
-            android:textSize="50dp" />
+            android:textSize="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.215" />
 
         <ListView
             android:layout_width="match_parent"
@@ -100,7 +106,9 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="209dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginBottom="92dp" />
+            android:layout_marginBottom="92dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
