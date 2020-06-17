@@ -260,7 +260,7 @@ public class HomeActivity extends AppCompatActivity {
             for (int i = 0; i < posts.length; i++) {
                 String[] attributes = posts[i].split("\\|");
                 System.out.println(Arrays.toString(attributes));
-                postList.add(new Post(attributes[2], attributes[3], Integer.parseInt(attributes[1]), Integer.parseInt(attributes[0]), Integer.parseInt(attributes[4]), Integer.parseInt(attributes[5])));
+                postList.add(new Post(attributes[2], attributes[3], attributes[6], Integer.parseInt(attributes[1]), Integer.parseInt(attributes[0]), Integer.parseInt(attributes[4]), Integer.parseInt(attributes[5])));
             }
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             finish();

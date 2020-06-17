@@ -54,7 +54,7 @@ public class CreateActivity extends AppCompatActivity {
 
     public static final String TAG = "CreateActivity";
     public static int id;
-    public static String titleText, bodyTexts;
+    public static String titleText, bodyTexts, branchText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,6 +85,7 @@ public class CreateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 titleText = title.getText().toString();
                 bodyTexts = bodyText.getText().toString();
+                branchText = branchSpinner.getSelectedItem().toString();
 
                 title.setText("");
                 bodyText.setText("");
@@ -152,12 +153,13 @@ public class CreateActivity extends AppCompatActivity {
                 HttpClient httpclient = HttpClients.createDefault();
                 HttpPost httppost = new HttpPost("http://73.71.24.214:8008/posts/add.php");
 
-                List<NameValuePair> params = new ArrayList<NameValuePair>(5);
+                List<NameValuePair> params = new ArrayList<NameValuePair>(6);
                 params.add(new BasicNameValuePair("user-id", Integer.toString(CreateActivity.id)));
                 params.add(new BasicNameValuePair("title", CreateActivity.titleText));
                 params.add(new BasicNameValuePair("description", CreateActivity.bodyTexts));
                 params.add(new BasicNameValuePair("upvotes", Integer.toString(0)));
                 params.add(new BasicNameValuePair("downvotes", Integer.toString(0)));
+                params.add(new BasicNameValuePair("branch", branchText));
                 httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
                 //Execute and get the response.

@@ -1,12 +1,13 @@
 package com.example.mycouncil.Feedback;
 
 public class Post {
-    private String title, description;
+    private String title, description, branch;
     private int userId, postId, upvotes, downvotes;
 
-    public Post(String title, String description, int userId, int postId, int upvotes, int downvotes) {
+    public Post(String title, String description, String branch, int userId, int postId, int upvotes, int downvotes) {
         this.title = title;
         this.description = description;
+        this.branch = branch;
         this.userId = userId;
         this.postId = postId;
         this.upvotes = upvotes;
