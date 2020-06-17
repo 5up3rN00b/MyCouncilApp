@@ -2,13 +2,14 @@ package com.example.mycouncil.Users;
 
 public class Leader implements User {
     private String email, firstName, lastName, branch;
-    private int zipCode;
+    private int id, zipCode;
 
-    public Leader(String email, String firstName, String lastName, String branch, int zipCode) {
+    public Leader(String email, String firstName, String lastName, String branch, int id, int zipCode) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.branch = branch;
+        this.id = id;
         this.zipCode = zipCode;
     }
 
@@ -26,6 +27,10 @@ public class Leader implements User {
 
     public String getBranch() {
         return branch;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getZipCode() {
