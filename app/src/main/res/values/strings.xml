@@ -17,6 +17,14 @@
         <item>Education Department</item>
     </string-array>
 
+    <string-array name = "postBranches">
+        <item>Home</item>
+        <item>Police Department</item>
+        <item>Fire Department</item>
+        <item>City Council</item>
+        <item>Education Department</item>
+    </string-array>
+
 
 
 </resources>
