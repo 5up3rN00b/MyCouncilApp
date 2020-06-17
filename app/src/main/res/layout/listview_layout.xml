@@ -106,34 +106,37 @@
 
     <LinearLayout
         android:layout_width="386dp"
-        android:layout_height="39dp"
+        android:layout_height="50dp"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="35dp"
+            android:layout_width="60dp"
             android:layout_height="38dp"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/upvote"
-                android:layout_width="34dp"
+                android:layout_width="35dp"
                 android:layout_height="38dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/arrowup"
                 android:paddingTop="10dp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="37dp"
+            android:layout_width="80dp"
             android:layout_height="38dp"
             android:background="#FFFFFF"
             android:orientation="vertical">
 
             <Button
+                android:layout_marginLeft="10dp"
                 android:id="@+id/downvote"
-                android:layout_width="36dp"
+                android:layout_width="43dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/arrowdown"

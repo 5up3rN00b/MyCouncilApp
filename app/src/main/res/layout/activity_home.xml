@@ -62,16 +62,16 @@
         app:srcCompat="@drawable/mycouncilhome" />
 
     <ListView
-        android:paddingTop="10dp"
         android:id="@+id/homeListView"
-        android:layout_width="418dp"
-        android:layout_height="470dp"
+        android:layout_width="413dp"
+        android:layout_height="462dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="34dp"
         android:divider="@null"
+        android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
