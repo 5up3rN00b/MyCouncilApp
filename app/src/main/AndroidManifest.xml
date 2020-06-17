@@ -16,6 +16,7 @@
         <activity android:name=".CreateActivity"></activity>
         <activity android:name=".RegistrationActivity"></activity>
         <activity android:name=".PollActivity"></activity>
+        <activity android:name=".ViewPollActivity"></activity>
         <activity android:name=".LoginActivity">
         </activity>
         <activity android:name=".SplashActivity">

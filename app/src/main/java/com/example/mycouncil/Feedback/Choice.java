@@ -16,4 +16,8 @@ public class Choice {
     public int getVotes() {
         return votes;
     }
+
+    public void addVote(){
+        votes++;
+    }
 }
