@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,12 @@ public class CreateActivity extends AppCompatActivity {
 
         title = findViewById(R.id.postTitleEditText);
         bodyText = findViewById(R.id.bodyTextEditText);
+
+
+        final Spinner spinner = findViewById(R.id.branches);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.branchNames, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         mCreate = findViewById(R.id.createPostButton);
         mCreate.setOnClickListener(new View.OnClickListener() {

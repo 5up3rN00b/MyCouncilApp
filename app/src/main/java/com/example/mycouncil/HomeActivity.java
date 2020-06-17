@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,15 +39,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-//        homeListView = findViewById(R.id.homeListView);
-//        homeListView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-
 
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
@@ -118,6 +110,7 @@ public class HomeActivity extends AppCompatActivity {
 
             TextView postTitle, bodyText, name, branchName;
             Button upvote,downvote;
+            ImageView pfp;
 
             postTitle = convertView.findViewById(R.id.postTitleTextView);
             bodyText = convertView.findViewById(R.id.postBodyTextView);
@@ -125,6 +118,7 @@ public class HomeActivity extends AppCompatActivity {
             branchName = convertView.findViewById(R.id.branchNameTextView);
             upvote = convertView.findViewById(R.id.upvote);
             downvote = convertView.findViewById(R.id.downvote);
+            pfp = convertView.findViewById(R.id.profilePictureImageView);
 
             postTitle.setText(title);
             bodyText.setText(body);

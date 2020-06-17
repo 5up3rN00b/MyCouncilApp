@@ -7,13 +7,14 @@
         <item>Fire Department</item>
         <item>Mayor</item>
         <item>Education Department</item>
-    </string-array>>
-    <string-array name = "postCategories">
+    </string-array>
+    <string-array name = "branchNames">
         <item>Police Department</item>
         <item>Fire Department</item>
         <item>City Council</item>
         <item>Education Department</item>
-    </string-array>>
+    </string-array>
+
 
 
 </resources>
