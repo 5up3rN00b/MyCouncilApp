@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.157">
 
         <TextView
-            android:id="@+id/pollTitleTextView"
+            android:id="@+id/postTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_weight="1"
@@ -96,8 +96,6 @@
             android:id="@+id/pollOption1"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_padding="5dp"
             android:layout_weight="1"
             android:background="@drawable/path1"
             android:bufferType="normal"
