@@ -34,7 +34,7 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button mHome, mRegister, mLogin;
+    private Button mRegister, mLogin;
     private EditText loginEmailAddress, loginPassword;
     private static final String TAG = "LoginActivity";
 
@@ -47,19 +47,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mHome = findViewById(R.id.home);
         mRegister = findViewById(R.id.register);
         mLogin = findViewById(R.id.loginButton);
 
         loginEmailAddress = findViewById(R.id.loginEmailAddress);
         loginPassword = findViewById(R.id.loginPassword);
 
-        mHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-            }
-        });
 
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
