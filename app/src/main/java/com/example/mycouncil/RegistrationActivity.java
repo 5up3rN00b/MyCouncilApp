@@ -168,7 +168,7 @@ public class RegistrationActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             if (text.equals("Registered successfully")) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
             } else {
                 Toast.makeText(RegistrationActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();

@@ -86,7 +86,9 @@ public class HomeActivity extends AppCompatActivity {
         if (LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(false);
-        }else{
+        }
+
+        if (!LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(true);
         }
@@ -154,7 +156,6 @@ public class HomeActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             String title = list.get(position).getTitle();
             String body = list.get(position).getDescription();
-            System.out.println(title+ " "+ body);
 
             LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(postResource, parent, false);
@@ -194,8 +195,6 @@ public class HomeActivity extends AppCompatActivity {
                         upvote.setBackgroundResource(R.drawable.arrowup_blue);
                         upisClicked[0] = true;
                     }
-                    System.out.println("Upvotes: " + list.get(position).getUpvotes());
-                    System.out.println("Total: " + list.get(position).getTotalVotes());
                 }
             });
 
@@ -218,8 +217,6 @@ public class HomeActivity extends AppCompatActivity {
                         downvote.setBackgroundResource(R.drawable.arrowdown_blue);
                         downisBlue[0] = true;
                     }
-                    System.out.println("Downvotes: " + list.get(position).getDownvotes());
-                    System.out.println("Total: " + list.get(position).getTotalVotes());
                 }
             });
 
@@ -258,7 +255,7 @@ public class HomeActivity extends AppCompatActivity {
 
             for (int i = 0; i < posts.length; i++) {
                 String[] attributes = posts[i].split("\\|");
-                System.out.println(Arrays.toString(attributes));
+                //System.out.println(Arrays.toString(attributes));
                 postList.add(new Post(attributes[2], attributes[3], attributes[6], Integer.parseInt(attributes[1]), Integer.parseInt(attributes[0]), Integer.parseInt(attributes[4]), Integer.parseInt(attributes[5])));
             }
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
