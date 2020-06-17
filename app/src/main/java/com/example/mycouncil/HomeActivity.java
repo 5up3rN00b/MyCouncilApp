@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,12 @@ public class HomeActivity extends AppCompatActivity {
 //
 //            }
 //        });
+
+        final Spinner branchSpinner = findViewById(R.id.branchSpinner);
+        branchSpinner.setVisibility(View.VISIBLE);
+        ArrayAdapter<CharSequence> branchAdapter = ArrayAdapter.createFromResource(this, R.array.branchNames, android.R.layout.simple_spinner_item);
+        branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        branchSpinner.setAdapter(branchAdapter);
 
 
         d1 =findViewById(R.id.d1);
