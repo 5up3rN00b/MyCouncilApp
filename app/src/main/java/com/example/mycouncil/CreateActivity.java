@@ -86,6 +86,7 @@ public class CreateActivity extends AppCompatActivity {
                 titleText = title.getText().toString();
                 bodyTexts = bodyText.getText().toString();
 
+
                 title.setText("");
                 bodyText.setText("");
 
