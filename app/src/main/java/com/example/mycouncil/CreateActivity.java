@@ -73,10 +73,11 @@ public class CreateActivity extends AppCompatActivity {
         bodyText = findViewById(R.id.bodyTextEditText);
 
 
-        final Spinner spinner = findViewById(R.id.branches);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.branchNames, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        final Spinner branchSpinner = findViewById(R.id.branch);
+        branchSpinner.setVisibility(View.VISIBLE);
+        ArrayAdapter<CharSequence> branchAdapter = ArrayAdapter.createFromResource(this, R.array.branchNames, android.R.layout.simple_spinner_item);
+        branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        branchSpinner.setAdapter(branchAdapter);
 
         mCreate = findViewById(R.id.createPostButton);
         mCreate.setOnClickListener(new View.OnClickListener() {

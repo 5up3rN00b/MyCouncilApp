@@ -7,12 +7,10 @@
         <item>Fire Department</item>
         <item>Mayor</item>
         <item>Education Department</item>
-<<<<<<< HEAD
-    </string-array>
-=======
     </string-array>>
->>>>>>> 98e9f312e059346d1fda3695b38e6a7f90be88e3
+
     <string-array name = "branchNames">
+        <item>Home</item>
         <item>Police Department</item>
         <item>Fire Department</item>
         <item>City Council</item>

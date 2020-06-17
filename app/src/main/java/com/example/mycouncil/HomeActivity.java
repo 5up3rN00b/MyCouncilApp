@@ -41,15 +41,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-<<<<<<< HEAD
-=======
-//        homeListView = findViewById(R.id.homeListView);
-//        homeListView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+
+
 
         final Spinner branchSpinner = findViewById(R.id.branchSpinner);
         branchSpinner.setVisibility(View.VISIBLE);
@@ -58,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         branchSpinner.setAdapter(branchAdapter);
 
 
->>>>>>> 98e9f312e059346d1fda3695b38e6a7f90be88e3
+
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
 
