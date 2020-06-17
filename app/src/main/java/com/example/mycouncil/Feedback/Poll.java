@@ -22,4 +22,12 @@ public class Poll {
     public Choice getChoice(int index) {
         return choices.get(index);
     }
+
+    public static int getTotalVotes(ArrayList <Choice> choices){
+        int total = 0;
+        for (Choice c : choices){
+            total += c.getVotes();
+        }
+        return  total;
+    }
 }
