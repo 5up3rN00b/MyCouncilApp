@@ -2,7 +2,9 @@ package com.example.mycouncil;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,18 +22,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.mycouncil.Feedback.Post;
+import com.example.mycouncil.Users.Citizen;
+import com.example.mycouncil.Users.Leader;
 import com.google.android.material.navigation.NavigationView;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.example.mycouncil.HomeActivity.postList;
 
 public class CreateActivity extends AppCompatActivity {
-    Button mCreate;
-    DrawerLayout d1;
-    ActionBarDrawerToggle abdt;
-    EditText title, bodyText;
-    String theTitle, body;
+    private Button mCreate;
+    private DrawerLayout d1;
+    private ActionBarDrawerToggle abdt;
+    private EditText title, bodyText;
+    private String theTitle, body;
+
+    public static final String TAG = "CreateActivity";
+    public static int id;
+    public static String titleText, bodyTexts;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,11 +75,19 @@ public class CreateActivity extends AppCompatActivity {
         mCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                theTitle = title.getText().toString();
-                body = bodyText.getText().toString();
-                postList.add(new Post(theTitle, body, 0,0));
+                titleText = title.getText().toString();
+                bodyTexts = bodyText.getText().toString();
+
                 title.setText("");
                 bodyText.setText("");
+
+                if (LoginActivity.isCitizen) {
+                    id = ((Citizen) LoginActivity.user).getId();
+                } else {
+                    id = ((Leader) LoginActivity.user).getId();
+                }
+
+                new CreateTask().execute();
             }
         });
 
@@ -97,5 +127,45 @@ public class CreateActivity extends AppCompatActivity {
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
+    class CreateTask extends AsyncTask<Void, Void, Void> {
+        private String text;
 
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                HttpClient httpclient = HttpClients.createDefault();
+                HttpPost httppost = new HttpPost("http://73.71.24.214:8008/posts/add.php");
+
+                List<NameValuePair> params = new ArrayList<NameValuePair>(5);
+                params.add(new BasicNameValuePair("user-id", Integer.toString(CreateActivity.id)));
+                params.add(new BasicNameValuePair("title", CreateActivity.titleText));
+                params.add(new BasicNameValuePair("description", CreateActivity.bodyTexts));
+                params.add(new BasicNameValuePair("upvotes", Integer.toString(0)));
+                params.add(new BasicNameValuePair("downvotes", Integer.toString(0)));
+                httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+
+                //Execute and get the response.
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity entity = response.getEntity();
+
+                InputStream inputStream = entity.getContent();
+                text = "";
+                text = IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
+            } catch (Exception e) {
+                Log.d(TAG, "Exception Caught: " + e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            if (text.length() > 0) {
+
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
+            } else {
+                Toast.makeText(CreateActivity.this, text, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }

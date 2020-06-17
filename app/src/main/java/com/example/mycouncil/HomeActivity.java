@@ -150,7 +150,7 @@ public class HomeActivity extends AppCompatActivity {
                         upisClicked[0] = true;
                     }
                     System.out.println("Upvotes: " + list.get(position).getUpvotes());
-                    System.out.println("Total: " + list.get(position).getTotalvotes());
+                    System.out.println("Total: " + list.get(position).getTotalVotes());
                 }
             });
 
@@ -174,13 +174,12 @@ public class HomeActivity extends AppCompatActivity {
                         downisBlue[0] = true;
                     }
                     System.out.println("Downvotes: " + list.get(position).getDownvotes());
-                    System.out.println("Total: " + list.get(position).getTotalvotes());
+                    System.out.println("Total: " + list.get(position).getTotalVotes());
                 }
             });
 
 
             return convertView;
-
         }
     }
 

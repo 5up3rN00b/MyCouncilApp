@@ -42,7 +42,7 @@ public class Post {
     public void subDownvotes(){
         downvotes--;
     }
-    public int getTotalvotes(){
+    public int getTotalVotes(){
         return upvotes - downvotes;
     }
 }
