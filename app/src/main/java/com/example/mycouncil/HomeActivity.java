@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -76,6 +77,12 @@ public class HomeActivity extends AppCompatActivity {
         branchSpinner.setAdapter(branchAdapter);
 
 
+
+        if (!LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(true);
+        }
+
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
 
@@ -96,17 +103,20 @@ public class HomeActivity extends AppCompatActivity {
 //                    Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class ));
                 }
-                if (id == R.id.branches){
+                else if (id == R.id.branches){
 //                    Toast.makeText(HomeActivity.this, "Branches", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), BranchActivity.class ));
                 }
-                if (id == R.id.post){
+                else if (id == R.id.post){
 //                    Toast.makeText(HomeActivity.this, "Post", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), CreateActivity.class ));
                 }
-                if (id == R.id.logout){
+                else if (id == R.id.logout){
 //                    Toast.makeText(HomeActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class ));
+                }
+                else if (id == R.id.poll){
+                    startActivity(new Intent(getApplicationContext(), PollActivity.class ));
                 }
                 return true;
             }
@@ -146,6 +156,7 @@ public class HomeActivity extends AppCompatActivity {
 
             TextView postTitle, bodyText, name, branchName;
             Button upvote,downvote;
+            ImageView pfp;
 
             postTitle = convertView.findViewById(R.id.postTitleTextView);
             bodyText = convertView.findViewById(R.id.postBodyTextView);
@@ -153,6 +164,7 @@ public class HomeActivity extends AppCompatActivity {
             branchName = convertView.findViewById(R.id.branchNameTextView);
             upvote = convertView.findViewById(R.id.upvote);
             downvote = convertView.findViewById(R.id.downvote);
+            pfp = convertView.findViewById(R.id.profilePictureImageView);
 
             postTitle.setText(title);
             bodyText.setText(body);

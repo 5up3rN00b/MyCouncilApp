@@ -1,10 +1,16 @@
 package com.example.mycouncil;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,33 +19,22 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.mycouncil.Feedback.Post;
 import com.google.android.material.navigation.NavigationView;
 
-public class BranchActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    Button mBack;
-    DrawerLayout d1;
-    ActionBarDrawerToggle abdt;
+import static com.example.mycouncil.HomeActivity.postList;
 
-    @Override
+public class PollActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_branch);
-
-        d1 =findViewById(R.id.d1);
-        abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        abdt.setDrawerIndicatorEnabled(true);
-
-        d1.addDrawerListener(abdt);
-        abdt.syncState();
+        setContentView(R.layout.activity_poll);
 
         if (!LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(true);
         }
-
-
 
         final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
 
@@ -69,19 +64,5 @@ public class BranchActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        mBack = findViewById(R.id.back);
-
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-            }
-        });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 }
