@@ -83,6 +83,11 @@ public class HomeActivity extends AppCompatActivity {
         System.out.println(LoginActivity.isCitizen);
 
 
+        if (LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(false);
+        }
+
         if (!LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(true);
