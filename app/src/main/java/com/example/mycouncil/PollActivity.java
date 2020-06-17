@@ -27,9 +27,32 @@ import java.util.ArrayList;
 import static com.example.mycouncil.HomeActivity.postList;
 
 public class PollActivity extends AppCompatActivity {
+
+    Button mCreate;
+    EditText mQuestion, mOption1, mOption2, mOption3, mOption4;
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poll);
+
+        mCreate = findViewById(R.id.createPollButton);
+        mQuestion = findViewById(R.id.questionEditText);
+        mOption1 = findViewById(R.id.optionOneEditText);
+        mOption2 = findViewById(R.id.optionTwoEditText);
+        mOption3 = findViewById(R.id.optionThreeEditText);
+        mOption4 = findViewById(R.id.optionFourEditText);
+
+        mCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mQuestion.getText().toString()!=null && mOption1.getText().toString() != null && mOption2.getText().toString() != null && mOption3.getText().toString() != null && mOption4.getText().toString() != null ){
+                    System.out.println(mQuestion.getText().toString() + " " + mOption1.getText().toString() + " " + mOption2.getText().toString()+ " " + mOption3.getText().toString() + " " + mOption4.getText().toString());
+                }
+                else{
+                    Toast.makeText(PollActivity.this, "Please Enter All Fields", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         if (!LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
