@@ -7,12 +7,6 @@
     </item>
 
     <item
-        android:id="@+id/branches"
-        android:title="Find your branches"
-        android:icon="@drawable/ic_android_black_24dp">
-    </item>
-
-    <item
         android:id="@+id/post"
         android:title="Create Post"
         android:icon="@drawable/ic_android_black_24dp">

@@ -80,10 +80,19 @@ public class HomeActivity extends AppCompatActivity {
         branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         branchSpinner.setAdapter(branchAdapter);
 
+        System.out.println(LoginActivity.isCitizen);
 
+<<<<<<< HEAD
+        if (LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(false);
+        }
+        else{
+=======
 
 
         if (!LoginActivity.isCitizen){
+>>>>>>> 21c05e06951eef2e6fa627f3e04934c9ceeac159
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(true);
         }
@@ -108,10 +117,6 @@ public class HomeActivity extends AppCompatActivity {
                 if (id == R.id.home){
 //                    Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class ));
-                }
-                else if (id == R.id.branches){
-//                    Toast.makeText(HomeActivity.this, "Branches", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), BranchActivity.class ));
                 }
                 else if (id == R.id.post){
 //                    Toast.makeText(HomeActivity.this, "Post", Toast.LENGTH_SHORT).show();

@@ -87,6 +87,7 @@ public class CreateActivity extends AppCompatActivity {
                 bodyTexts = bodyText.getText().toString();
                 branchText = branchSpinner.getSelectedItem().toString();
 
+
                 title.setText("");
                 bodyText.setText("");
 
@@ -116,10 +117,6 @@ public class CreateActivity extends AppCompatActivity {
                 if (id == R.id.home){
 //                    Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class ));
-                }
-                else if (id == R.id.branches){
-//                    Toast.makeText(HomeActivity.this, "Branches", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), BranchActivity.class ));
                 }
                 else if (id == R.id.post){
 //                    Toast.makeText(HomeActivity.this, "Post", Toast.LENGTH_SHORT).show();
