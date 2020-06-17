@@ -75,7 +75,7 @@ public class CreateActivity extends AppCompatActivity {
 
         final Spinner branchSpinner = findViewById(R.id.branch);
         branchSpinner.setVisibility(View.VISIBLE);
-        ArrayAdapter<CharSequence> branchAdapter = ArrayAdapter.createFromResource(this, R.array.branchNames, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> branchAdapter = ArrayAdapter.createFromResource(this, R.array.postBranches, android.R.layout.simple_spinner_item);
         branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         branchSpinner.setAdapter(branchAdapter);
 
