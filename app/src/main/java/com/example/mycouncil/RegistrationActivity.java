@@ -42,7 +42,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText zipcode, first_name, last_name, email, password;
     private static final String TAG = "RegistrationActivity";
 
-    public static String zipcodeText, first_nameText, last_nameText, emailText, passwordText;
+    public static boolean isPolitician;
+    public static String zipcodeText, first_nameText, last_nameText, emailText, passwordText, selection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mPolitician.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isPolitician = true;
                 spinner.setVisibility(View.VISIBLE);
                 mPolitician.setBackgroundResource(R.drawable.political_color);
                 mPolitician.setTextColor(Color.WHITE);
@@ -87,6 +89,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mCitizen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isPolitician = false;
                 spinner.setVisibility(View.GONE);
                 mPolitician.setBackgroundResource(R.drawable.citizen);
                 mPolitician.setTextColor(Color.parseColor("#707070"));
@@ -109,6 +112,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 last_nameText = last_name.getText().toString();
                 emailText = email.getText().toString();
                 passwordText = password.getText().toString();
+
+                if (isPolitician) {
+                    selection = spinner.getSelectedItem().toString();
+                }
+
                 new PostTask().execute();
             }
         });
@@ -130,12 +138,17 @@ public class RegistrationActivity extends AppCompatActivity {
                 HttpClient httpclient = HttpClients.createDefault();
                 HttpPost httppost = new HttpPost("http://73.71.24.214:8008/users/add.php");
 
-                List<NameValuePair> params = new ArrayList<NameValuePair>(5);
+                List<NameValuePair> params = new ArrayList<NameValuePair>(6);
                 params.add(new BasicNameValuePair("zipcode", RegistrationActivity.zipcodeText));
                 params.add(new BasicNameValuePair("first-name", RegistrationActivity.first_nameText));
                 params.add(new BasicNameValuePair("last-name", RegistrationActivity.last_nameText));
                 params.add(new BasicNameValuePair("email", RegistrationActivity.emailText));
                 params.add(new BasicNameValuePair("password", RegistrationActivity.passwordText));
+
+                if (RegistrationActivity.isPolitician) {
+                    params.add(new BasicNameValuePair("branch", RegistrationActivity.selection));
+                }
+
                 httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
                 System.out.println(params);
 

@@ -2,7 +2,10 @@ package com.example.mycouncil;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,6 +47,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
+
 public class HomeActivity extends AppCompatActivity {
 
     Button mLogout;
@@ -78,14 +82,21 @@ public class HomeActivity extends AppCompatActivity {
 
         System.out.println(LoginActivity.isCitizen);
 
+<<<<<<< HEAD
         if (LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(false);
         }
         else{
+=======
+
+
+        if (!LoginActivity.isCitizen){
+>>>>>>> 21c05e06951eef2e6fa627f3e04934c9ceeac159
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(true);
         }
+
 
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
@@ -254,7 +265,7 @@ public class HomeActivity extends AppCompatActivity {
             for (int i = 0; i < posts.length; i++) {
                 String[] attributes = posts[i].split("\\|");
                 System.out.println(Arrays.toString(attributes));
-                postList.add(new Post(attributes[2], attributes[3], Integer.parseInt(attributes[1]), Integer.parseInt(attributes[0]), Integer.parseInt(attributes[4]), Integer.parseInt(attributes[5])));
+                postList.add(new Post(attributes[2], attributes[3], attributes[6], Integer.parseInt(attributes[1]), Integer.parseInt(attributes[0]), Integer.parseInt(attributes[4]), Integer.parseInt(attributes[5])));
             }
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             finish();
