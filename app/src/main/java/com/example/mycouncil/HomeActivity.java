@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,15 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        final Spinner branchSpinner = findViewById(R.id.branchSpinner);
+        branchSpinner.setVisibility(View.VISIBLE);
+        ArrayAdapter<CharSequence> branchAdapter = ArrayAdapter.createFromResource(this, R.array.branchNames, android.R.layout.simple_spinner_item);
+        branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        branchSpinner.setAdapter(branchAdapter);
+
+
 
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
@@ -144,7 +154,7 @@ public class HomeActivity extends AppCompatActivity {
                         upisClicked[0] = true;
                     }
                     System.out.println("Upvotes: " + list.get(position).getUpvotes());
-                    System.out.println("Total: " + list.get(position).getTotalvotes());
+                    System.out.println("Total: " + list.get(position).getTotalVotes());
                 }
             });
 
@@ -168,13 +178,12 @@ public class HomeActivity extends AppCompatActivity {
                         downisBlue[0] = true;
                     }
                     System.out.println("Downvotes: " + list.get(position).getDownvotes());
-                    System.out.println("Total: " + list.get(position).getTotalvotes());
+                    System.out.println("Total: " + list.get(position).getTotalVotes());
                 }
             });
 
 
             return convertView;
-
         }
     }
 
