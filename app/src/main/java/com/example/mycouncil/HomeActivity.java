@@ -2,7 +2,10 @@ package com.example.mycouncil;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,6 +47,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
+
 public class HomeActivity extends AppCompatActivity {
 
     Button mLogout;
@@ -78,10 +82,12 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+
         if (!LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(true);
         }
+
 
         d1 =findViewById(R.id.d1);
         abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
