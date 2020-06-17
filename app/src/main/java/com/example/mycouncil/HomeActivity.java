@@ -42,6 +42,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
+
+
         final Spinner branchSpinner = findViewById(R.id.branchSpinner);
         branchSpinner.setVisibility(View.VISIBLE);
         ArrayAdapter<CharSequence> branchAdapter = ArrayAdapter.createFromResource(this, R.array.branchNames, android.R.layout.simple_spinner_item);
