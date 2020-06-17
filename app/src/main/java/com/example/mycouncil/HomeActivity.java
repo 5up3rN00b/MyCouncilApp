@@ -4,13 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,6 +29,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.mycouncil.Feedback.Post;
 import com.google.android.material.navigation.NavigationView;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,10 +56,15 @@ public class HomeActivity extends AppCompatActivity {
     ListView homeListView;
     public static ArrayList<Post> postList = new ArrayList<>();
     public static ArrayList<Post> pollList = new ArrayList<>();
+
+    public static final String TAG = "HomeActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        if (postList.size() == 0) new GetPostsTask().execute();
 
 //        homeListView = findViewById(R.id.homeListView);
 //        homeListView.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +80,13 @@ public class HomeActivity extends AppCompatActivity {
         branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         branchSpinner.setAdapter(branchAdapter);
 
+
+
+
+        if (!LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(true);
+        }
 
 
         d1 =findViewById(R.id.d1);
@@ -80,17 +109,20 @@ public class HomeActivity extends AppCompatActivity {
 //                    Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class ));
                 }
-                if (id == R.id.branches){
+                else if (id == R.id.branches){
 //                    Toast.makeText(HomeActivity.this, "Branches", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), BranchActivity.class ));
                 }
-                if (id == R.id.post){
+                else if (id == R.id.post){
 //                    Toast.makeText(HomeActivity.this, "Post", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), CreateActivity.class ));
                 }
-                if (id == R.id.logout){
+                else if (id == R.id.logout){
 //                    Toast.makeText(HomeActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class ));
+                }
+                else if (id == R.id.poll){
+                    startActivity(new Intent(getApplicationContext(), PollActivity.class ));
                 }
                 return true;
             }
@@ -122,7 +154,7 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             String title = list.get(position).getTitle();
-            String body = list.get(position).getTitle();
+            String body = list.get(position).getDescription();
             System.out.println(title+ " "+ body);
 
             LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -130,6 +162,7 @@ public class HomeActivity extends AppCompatActivity {
 
             TextView postTitle, bodyText, name, branchName;
             Button upvote,downvote;
+            ImageView pfp;
 
             postTitle = convertView.findViewById(R.id.postTitleTextView);
             bodyText = convertView.findViewById(R.id.postBodyTextView);
@@ -137,6 +170,7 @@ public class HomeActivity extends AppCompatActivity {
             branchName = convertView.findViewById(R.id.branchNameTextView);
             upvote = convertView.findViewById(R.id.upvote);
             downvote = convertView.findViewById(R.id.downvote);
+            pfp = convertView.findViewById(R.id.profilePictureImageView);
 
             postTitle.setText(title);
             bodyText.setText(body);
@@ -195,5 +229,42 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    class GetPostsTask extends AsyncTask<Void, Void, Void> {
+        private String text;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                HttpClient httpclient = HttpClients.createDefault();
+                HttpGet httpget = new HttpGet("http://73.71.24.214:8008/posts/get.php?all=true");
+
+                //Execute and get the response.
+                HttpResponse response = httpclient.execute(httpget);
+                HttpEntity entity = response.getEntity();
+
+                InputStream inputStream = entity.getContent();
+                text = "";
+                text = IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
+            } catch (Exception e) {
+                Log.d(TAG, "Exception Caught: " + e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Log.d(TAG, text);
+            postList = new ArrayList<>();
+            String[] posts = text.split("<br>");
+
+            for (int i = 0; i < posts.length; i++) {
+                String[] attributes = posts[i].split("\\|");
+                System.out.println(Arrays.toString(attributes));
+                postList.add(new Post(attributes[2], attributes[3], Integer.parseInt(attributes[1]), Integer.parseInt(attributes[0]), Integer.parseInt(attributes[4]), Integer.parseInt(attributes[5])));
+            }
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            finish();
+        }
+    }
 }
 
