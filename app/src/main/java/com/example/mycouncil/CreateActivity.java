@@ -117,10 +117,6 @@ public class CreateActivity extends AppCompatActivity {
 //                    Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class ));
                 }
-                else if (id == R.id.branches){
-//                    Toast.makeText(HomeActivity.this, "Branches", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), BranchActivity.class ));
-                }
                 else if (id == R.id.post){
 //                    Toast.makeText(HomeActivity.this, "Post", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), CreateActivity.class ));
