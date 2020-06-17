@@ -34,6 +34,11 @@ public class BranchActivity extends AppCompatActivity {
         d1.addDrawerListener(abdt);
         abdt.syncState();
 
+        if (!LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(true);
+        }
+
 
 
         final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
@@ -43,20 +48,23 @@ public class BranchActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 if (id == R.id.home){
-//                    Toast.makeText(BranchActivity.this, "Home", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class ));
                 }
-                if (id == R.id.branches){
-//                    Toast.makeText(BranchActivity.this, "Branches", Toast.LENGTH_SHORT).show();
+                else if (id == R.id.branches){
+//                    Toast.makeText(HomeActivity.this, "Branches", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), BranchActivity.class ));
                 }
-                if (id == R.id.post){
-//                    Toast.makeText(BranchActivity.this, "Post", Toast.LENGTH_SHORT).show();
+                else if (id == R.id.post){
+//                    Toast.makeText(HomeActivity.this, "Post", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), CreateActivity.class ));
                 }
-                if (id == R.id.logout){
-                    Toast.makeText(BranchActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
+                else if (id == R.id.logout){
+//                    Toast.makeText(HomeActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class ));
+                }
+                else if (id == R.id.poll){
+                    startActivity(new Intent(getApplicationContext(), PollActivity.class ));
                 }
                 return true;
             }

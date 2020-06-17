@@ -26,42 +26,10 @@ import java.util.ArrayList;
 
 import static com.example.mycouncil.HomeActivity.postList;
 
-public class CreateActivity extends AppCompatActivity {
-    Button mCreate;
-    DrawerLayout d1;
-    ActionBarDrawerToggle abdt;
-    EditText title, bodyText;
-    String theTitle, body;
-
-    @Override
+public class PollActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_poll);
-        setContentView(R.layout.activity_post);
-        d1 =findViewById(R.id.d1);
-        abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
-
-        abdt.setDrawerIndicatorEnabled(true);
-
-        d1.addDrawerListener(abdt);
-        abdt.syncState();
-
-        title = findViewById(R.id.postTitleEditText);
-        bodyText = findViewById(R.id.bodyTextEditText);
-
-        mCreate = findViewById(R.id.createPostButton);
-        mCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                theTitle = title.getText().toString();
-                body = bodyText.getText().toString();
-                postList.add(new Post(theTitle, body, 0,0));
-                title.setText("");
-                bodyText.setText("");
-            }
-        });
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_poll);
 
         if (!LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
@@ -96,14 +64,5 @@ public class CreateActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
-    }
-
-
 }
