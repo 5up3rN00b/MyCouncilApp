@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                     LoginActivity.user = new Citizen(params[2], params[3], params[4], Integer.parseInt(params[1]), Integer.parseInt(params[5]));
                     LoginActivity.isCitizen = true;
                 } else if (params[0].equals("Leader")) {
-                    LoginActivity.user = new Leader(params[2], params[4], params[5], params[3], Integer.parseInt(params[2]), Integer.parseInt(params[6]));
+                    LoginActivity.user = new Leader(params[2], params[4], params[5], params[3], Integer.parseInt(params[1]), Integer.parseInt(params[6]));
                     LoginActivity.isCitizen = false;
                 }
 
