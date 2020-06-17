@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -40,19 +41,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-//        homeListView = findViewById(R.id.homeListView);
-//        homeListView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
 
         final Spinner branchSpinner = findViewById(R.id.branchSpinner);
         branchSpinner.setVisibility(View.VISIBLE);
         ArrayAdapter<CharSequence> branchAdapter = ArrayAdapter.createFromResource(this, R.array.branchNames, android.R.layout.simple_spinner_item);
         branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         branchSpinner.setAdapter(branchAdapter);
+
 
 
         d1 =findViewById(R.id.d1);
@@ -125,6 +120,7 @@ public class HomeActivity extends AppCompatActivity {
 
             TextView postTitle, bodyText, name, branchName;
             Button upvote,downvote;
+            ImageView pfp;
 
             postTitle = convertView.findViewById(R.id.postTitleTextView);
             bodyText = convertView.findViewById(R.id.postBodyTextView);
@@ -132,6 +128,7 @@ public class HomeActivity extends AppCompatActivity {
             branchName = convertView.findViewById(R.id.branchNameTextView);
             upvote = convertView.findViewById(R.id.upvote);
             downvote = convertView.findViewById(R.id.downvote);
+            pfp = convertView.findViewById(R.id.profilePictureImageView);
 
             postTitle.setText(title);
             bodyText.setText(body);
