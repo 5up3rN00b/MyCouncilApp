@@ -26,13 +26,12 @@
             android:background="@drawable/rectangle18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/blueBackground"
-            android:layout_width="408dp"
-            android:layout_height="144dp"
+            android:layout_width="424dp"
+            android:layout_height="147dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -53,10 +52,10 @@
             android:layout_alignParentBottom="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintHorizontal_bias="0.486"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.021"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/mycouncilcreate" />
 
         <TextView
@@ -67,18 +66,16 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="26dp"
-            android:layout_marginBottom="516dp"
             android:fontFamily="@font/bebasneue_regular"
             android:text="Create Poll"
             android:textAlignment="center"
             android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="@+id/greyBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/blueBackground"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.263" />
 
         <TextView
             android:id="@+id/votingOptionsTextView"
@@ -89,15 +86,16 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="18dp"
+            android:layout_marginBottom="17dp"
             android:fontFamily="@font/bebasneue_regular"
             android:text="Voting Options"
             android:textAlignment="center"
             android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/optionOneEditText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/questionEditText"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <EditText
             android:id="@+id/questionEditText"
@@ -117,14 +115,14 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintHorizontal_bias="0.463"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/createPollTextView"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.008" />
 
         <EditText
             android:id="@+id/optionOneEditText"
-            android:layout_width="306dp"
+            android:layout_width="300dp"
             android:layout_height="52dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -140,20 +138,20 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.468"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/votingOptionsTextView"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.55" />
 
         <EditText
             android:id="@+id/optionTwoEditText"
-            android:layout_width="303dp"
-            android:layout_height="58dp"
+            android:layout_width="300dp"
+            android:layout_height="52dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="56dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/password"
             android:ems="10"
@@ -167,13 +165,13 @@
 
         <EditText
             android:id="@+id/optionThreeEditText"
-            android:layout_width="289dp"
-            android:layout_height="54dp"
+            android:layout_width="300dp"
+            android:layout_height="52dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/password"
             android:ems="10"
             android:fontFamily="@font/bebasneue_regular"
@@ -183,7 +181,7 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.442"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/optionTwoEditText"
             app:layout_constraintVertical_bias="0.0" />
@@ -196,7 +194,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="130dp"
             android:background="@drawable/path1"
             android:fontFamily="@font/bebasneue_regular"
@@ -212,13 +210,13 @@
 
         <EditText
             android:id="@+id/optionFourEditText"
-            android:layout_width="271dp"
-            android:layout_height="53dp"
+            android:layout_width="300dp"
+            android:layout_height="52dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="116dp"
             android:background="@drawable/password"
             android:ems="10"
@@ -229,6 +227,7 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/greyBackground"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/optionThreeEditText"
             app:layout_constraintVertical_bias="0.0" />
