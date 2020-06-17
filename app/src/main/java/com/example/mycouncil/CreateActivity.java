@@ -87,6 +87,7 @@ public class CreateActivity extends AppCompatActivity {
                 bodyTexts = bodyText.getText().toString();
                 branchText = branchSpinner.getSelectedItem().toString();
 
+
                 title.setText("");
                 bodyText.setText("");
 
