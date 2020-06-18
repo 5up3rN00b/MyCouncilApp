@@ -42,6 +42,16 @@ public class PollActivity extends AppCompatActivity {
         mOption3 = findViewById(R.id.optionThreeEditText);
         mOption4 = findViewById(R.id.optionFourEditText);
 
+        if (LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(false);
+        }
+
+        if (!LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(true);
+        }
+
         mCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

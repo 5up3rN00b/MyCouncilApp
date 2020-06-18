@@ -56,6 +56,8 @@ public class ViewPollActivity extends AppCompatActivity {
     ListView viewPollList;
     ArrayList <Poll> pollList = new ArrayList<>();
     ArrayList <Choice> listOfChoices = new ArrayList<>();
+    DrawerLayout d1;
+    ActionBarDrawerToggle abdt;
 
 
 
@@ -73,6 +75,16 @@ public class ViewPollActivity extends AppCompatActivity {
         pollList.add(new Poll("Test", listOfChoices));
         pollList.add(new Poll("TEst 2", listOfChoices));
 
+        if (LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(false);
+        }
+
+        if (!LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(true);
+        }
+
         for (Poll p: pollList){
             System.out.println(p.getTitle());
         }
@@ -81,6 +93,41 @@ public class ViewPollActivity extends AppCompatActivity {
         PollListAdapter ladapter = new PollListAdapter(this, R.layout.poll_layout, pollList);
         viewPollList.setAdapter(ladapter);
 
+        final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
+
+        d1 =findViewById(R.id.d1);
+        abdt = new ActionBarDrawerToggle(this, d1, R.string.Open, R.string.Close);
+
+        abdt.setDrawerIndicatorEnabled(true);
+
+        d1.addDrawerListener(abdt);
+        abdt.syncState();
+
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                if (id == R.id.home){
+//                    Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class ));
+                }
+                else if (id == R.id.post){
+//                    Toast.makeText(HomeActivity.this, "Post", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), CreateActivity.class ));
+                }
+                else if (id == R.id.logout){
+//                    Toast.makeText(HomeActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class ));
+                }
+                else if (id == R.id.poll){
+                    startActivity(new Intent(getApplicationContext(), PollActivity.class ));
+                }
+                else if (id == R.id.viewPolls){
+                    startActivity((new Intent(getApplicationContext(), ViewPollActivity.class)));
+                }
+                return true;
+            }
+        });
     }
 
 class PollListAdapter extends ArrayAdapter<Post> {
@@ -116,7 +163,7 @@ class PollListAdapter extends ArrayAdapter<Post> {
         two = convertView.findViewById(R.id.pollOption2);
         three = convertView.findViewById(R.id.pollOption3);
         four = convertView.findViewById(R.id.pollOption4);
-        five = convertView.findViewById(R.id.noneOfTheAboveOption);
+        five = convertView.findViewById(R.id.pollOption5);
 
         pollTitle.setText(question);
         one.setText(optionOne);
@@ -132,4 +179,8 @@ class PollListAdapter extends ArrayAdapter<Post> {
         return convertView;
     }
 }
+
+
+
+
 }
