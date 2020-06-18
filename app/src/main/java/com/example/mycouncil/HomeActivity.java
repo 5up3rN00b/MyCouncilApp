@@ -90,23 +90,22 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    title.setBackgroundResource(R.drawable.mycouncilhome);
+                    title.setBackgroundResource(R.drawable.home);
                 }
 
                 if(position == 1){
                     title.setBackgroundResource(R.drawable.police);
                 }
 
+                if(position == 2){
+                    title.setBackgroundResource(R.drawable.fire);
+                }
                 if(position == 3){
-
+                    title.setBackgroundResource(R.drawable.city);
                 }
 
-                if(position == 4){
-
-                }
-
-                if(position == 5){
-
+                if(position == 4) {
+                    title.setBackgroundResource(R.drawable.education1);
                 }
             }
 
