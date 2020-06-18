@@ -86,33 +86,71 @@ public class HomeActivity extends AppCompatActivity {
 
         title = findViewById(R.id.imageView4);
 
+        ListView homePostList = findViewById(R.id.homeListView);
+
+
+
         branchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
                     title.setBackgroundResource(R.drawable.home);
+                    PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, postList);
+                    homePostList.setAdapter(adapter);
                 }
 
                 if(position == 1){
                     title.setBackgroundResource(R.drawable.police);
+                    ArrayList<Post> policeList = new ArrayList<>();
+                    for(Post p : postList) {
+                        if (p.getBranch().equals("Police Department")) {
+                            policeList.add(p);
+                        }
+                    }
+                    PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, policeList);
+                    homePostList.setAdapter(adapter);
                 }
 
                 if(position == 2){
                     title.setBackgroundResource(R.drawable.fire);
+                    ArrayList<Post> fireList = new ArrayList<>();
+                    for(Post p : postList) {
+                        if (p.getBranch().equals("Fire Department")) {
+                            fireList.add(p);
+                        }
+                    }
+                    PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, fireList);
+                    homePostList.setAdapter(adapter);
                 }
+
                 if(position == 3){
                     title.setBackgroundResource(R.drawable.city);
+                    ArrayList<Post> cityList = new ArrayList<>();
+                    for(Post p : postList) {
+                        if (p.getBranch().equals("City Council")) {
+                            cityList.add(p);
+                        }
+                    }
+                    PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, cityList);
+                    homePostList.setAdapter(adapter);
                 }
 
                 if(position == 4) {
                     title.setBackgroundResource(R.drawable.education1);
+                    ArrayList<Post> eduList = new ArrayList<>();
+                    for(Post p : postList) {
+                        if (p.getBranch().equals("Education Department")) {
+                            eduList.add(p);
+                        }
+                    }
+                    PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, eduList);
+                    homePostList.setAdapter(adapter);
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 Log.e("Techie","----------------------------citizenship2----------------------------");
-
             }
         });
         System.out.println(LoginActivity.isCitizen);
@@ -167,9 +205,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        ListView homePostList = findViewById(R.id.homeListView);
-        PostListAdapter adapter = new PostListAdapter(this, R.layout.listview_layout, postList);
-        homePostList.setAdapter(adapter);
 
     }
 
