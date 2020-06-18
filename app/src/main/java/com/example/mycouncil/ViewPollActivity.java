@@ -59,6 +59,7 @@ public class ViewPollActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +78,7 @@ public class ViewPollActivity extends AppCompatActivity {
             System.out.println(p.getTitle());
         }
 
-        viewPollList = findViewById(R.id.seepolls);
+        viewPollList = findViewById(R.id.viewPollList);
         PollListAdapter ladapter = new PollListAdapter(this, R.layout.poll_layout, pollList);
         viewPollList.setAdapter(ladapter);
 
@@ -103,7 +104,7 @@ class PollListAdapter extends ArrayAdapter<Post> {
         String optionTwo = list.get(position).getChoice(1).getDescription();
         String optionThree = list.get(position).getChoice(2).getDescription();
         String optionFour = list.get(position).getChoice(3).getDescription();
-        String optionFive = list.get(position).getChoice(4).getDescription();
+        String noneOfTheAboveOption = list.get(position).getChoice(4).getDescription();
 
         LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(pollResource, parent, false);
@@ -123,7 +124,7 @@ class PollListAdapter extends ArrayAdapter<Post> {
         two.setText(optionTwo);
         three.setText(optionThree);
         four.setText(optionFour);
-        five.setText(optionFive);
+        five.setText(noneOfTheAboveOption);
 
         System.out.println(one);
 
