@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,6 +28,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.mycouncil.Feedback.Post;
+import com.example.mycouncil.Users.Citizen;
+import com.example.mycouncil.Users.Leader;
 import com.google.android.material.navigation.NavigationView;
 
 import org.apache.commons.io.IOUtils;
@@ -54,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
     DrawerLayout d1;
     ActionBarDrawerToggle abdt;
     ListView homeListView;
+    ImageView title;
     public static ArrayList<Post> postList = new ArrayList<>();
     public static ArrayList<Post> pollList = new ArrayList<>();
 
@@ -80,6 +84,26 @@ public class HomeActivity extends AppCompatActivity {
         branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         branchSpinner.setAdapter(branchAdapter);
 
+        title = findViewById(R.id.imageView4);
+
+        branchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0){
+                    title.setBackgroundResource(R.drawable.mycouncilhome);
+                }
+                if(position == 1){
+                    title.setBackgroundResource(R.drawable.police);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.e("Techie","----------------------------citizenship2----------------------------");
+
+            }
+        });
         System.out.println(LoginActivity.isCitizen);
 
 
@@ -159,6 +183,8 @@ public class HomeActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             String title = list.get(position).getTitle();
             String body = list.get(position).getDescription();
+            String branch = list.get(position).getBranch();
+
 
             LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(postResource, parent, false);
@@ -177,7 +203,7 @@ public class HomeActivity extends AppCompatActivity {
 
             postTitle.setText(title);
             bodyText.setText(body);
-            name.setText("Jeff Bezos");
+            //name.setText();
             //branchName.setText("Police");
             final boolean[] downisBlue = {false};
             final boolean[]  upisClicked = {false};
