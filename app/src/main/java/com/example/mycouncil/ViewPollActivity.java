@@ -164,7 +164,7 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         two = convertView.findViewById(R.id.pollOption2);
         three = convertView.findViewById(R.id.pollOption3);
         four = convertView.findViewById(R.id.pollOption4);
-        five = convertView.findViewById(R.id.pollOption5);
+        five = convertView.findViewById(R.id.noneOfTheAboveOption);
 
         pollTitle.setText(question);
         one.setText(optionOne);
