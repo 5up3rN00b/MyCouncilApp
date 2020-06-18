@@ -92,10 +92,22 @@ public class HomeActivity extends AppCompatActivity {
                 if(position == 0){
                     title.setBackgroundResource(R.drawable.mycouncilhome);
                 }
+
                 if(position == 1){
                     title.setBackgroundResource(R.drawable.police);
                 }
 
+                if(position == 3){
+
+                }
+
+                if(position == 4){
+
+                }
+
+                if(position == 5){
+
+                }
             }
 
             @Override
