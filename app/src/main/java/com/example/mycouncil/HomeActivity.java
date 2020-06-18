@@ -155,6 +155,7 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+
         ListView homePostList = findViewById(R.id.homeListView);
         PostListAdapter adapter = new PostListAdapter(this, R.layout.listview_layout, postList);
         homePostList.setAdapter(adapter);
@@ -183,7 +184,12 @@ public class HomeActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             String title = list.get(position).getTitle();
             String body = list.get(position).getDescription();
-            String branch = list.get(position).getBranch();
+
+            String branchNameEnter = list.get(position).getBranch();
+            Integer userID = list.get(position).getUserId();
+
+
+
 
 
             LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -196,15 +202,20 @@ public class HomeActivity extends AppCompatActivity {
             postTitle = convertView.findViewById(R.id.postTitleTextView);
             bodyText = convertView.findViewById(R.id.postBodyTextView);
             name = convertView.findViewById(R.id.namePostTextView);
-            branchName = convertView.findViewById(R.id.branchNameTextView);
+            branchName = convertView.findViewById(R.id.branchNamePostTextView);
             upvote = convertView.findViewById(R.id.upvote);
             downvote = convertView.findViewById(R.id.downvote);
             pfp = convertView.findViewById(R.id.profilePictureImageView);
 
             postTitle.setText(title);
             bodyText.setText(body);
-            //name.setText();
-            //branchName.setText("Police");
+
+            name.setText(userID.toString());
+            branchName.setText(branchNameEnter);
+
+
+
+
             final boolean[] downisBlue = {false};
             final boolean[]  upisClicked = {false};
             upvote.setOnClickListener(new View.OnClickListener() {

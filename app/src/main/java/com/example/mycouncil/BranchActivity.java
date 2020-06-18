@@ -62,6 +62,9 @@ public class BranchActivity extends AppCompatActivity {
                 else if (id == R.id.poll){
                     startActivity(new Intent(getApplicationContext(), PollActivity.class ));
                 }
+                else if (id == R.id.viewPolls){
+                    startActivity((new Intent(getApplicationContext(), ViewPollActivity.class)));
+                }
                 return true;
             }
         });

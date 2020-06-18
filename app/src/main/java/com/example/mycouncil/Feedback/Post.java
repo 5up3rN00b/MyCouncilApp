@@ -22,9 +22,11 @@ public class Post {
         return description;
     }
 
-    public String getBranch(){
+
+    public String getBranch() {
         return branch;
     }
+
     public int getUserId() {
         return userId;
     }
