@@ -215,7 +215,7 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/pollOption5"
+            android:id="@+id/noneOfTheAboveOption"
             android:layout_width="80dp"
             android:layout_height="60dp"
             android:layout_weight="1"
