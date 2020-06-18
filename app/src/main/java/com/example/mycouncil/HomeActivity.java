@@ -178,7 +178,7 @@ public class HomeActivity extends AppCompatActivity {
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
-    class PostListAdapter extends ArrayAdapter<Post> {
+    class PostListAdapter extends ArrayAdapter <Post> {
         private ArrayList<Post> list;
         private Context postContext;
         int postResource;
@@ -224,7 +224,8 @@ public class HomeActivity extends AppCompatActivity {
             name.setText(userID.toString());
             branchName.setText(branchNameEnter);
 
-
+            System.out.println(name.getText().toString());
+            System.out.println(branchName.getText().toString());
 
 
             final boolean[] downisBlue = {false};
