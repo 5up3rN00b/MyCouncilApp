@@ -262,6 +262,11 @@ public class HomeActivity extends AppCompatActivity {
             System.out.println(name.getText().toString());
             System.out.println(branchName.getText().toString());
 
+            TextView upvoteCounter;
+            TextView downvoteCounter;
+
+            upvoteCounter = convertView.findViewById(R.id.upvoteCounter);
+            downvoteCounter = convertView.findViewById(R.id.downvoteCounter);
 
             boolean[] downisBlue = {false};
             boolean[]  upisClicked = {false};
@@ -269,6 +274,7 @@ public class HomeActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     downvote.setBackgroundResource(R.drawable.arrowdown);
+
                     if(downisBlue[0]){
                         list.get(position).subDownvotes();
                     }
@@ -282,6 +288,8 @@ public class HomeActivity extends AppCompatActivity {
                         upvote.setBackgroundResource(R.drawable.arrowup_blue);
                         upisClicked[0] = true;
                     }
+                    upvoteCounter.setText(String.valueOf(list.get(position).getUpvotes()));
+                    downvoteCounter.setText(String.valueOf(list.get(position).getDownvotes()));
                 }
             });
 
@@ -289,6 +297,7 @@ public class HomeActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     upvote.setBackgroundResource(R.drawable.arrowup);
+
                     if(upisClicked[0]){
                         list.get(position).subUpvotes();
                     }
@@ -304,17 +313,16 @@ public class HomeActivity extends AppCompatActivity {
                         downvote.setBackgroundResource(R.drawable.arrowdown_blue);
                         downisBlue[0] = true;
                     }
+                    upvoteCounter.setText(String.valueOf(list.get(position).getUpvotes()));
+                    downvoteCounter.setText(String.valueOf(list.get(position).getDownvotes()));
+
                 }
             });
 
-            TextView upvoteCounter;
-            TextView downvoteCounter;
 
-            upvoteCounter = convertView.findViewById(R.id.upvoteCounter);
-            downvoteCounter = convertView.findViewById(R.id.downvoteCounter);
 
-            upvoteCounter.setText(String.valueOf(list.get(position).getUpvotes()));
-            downvoteCounter.setText(String.valueOf(list.get(position).getDownvotes()));
+
+
 
 
             return convertView;
