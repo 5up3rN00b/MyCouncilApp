@@ -256,7 +256,11 @@ public class HomeActivity extends AppCompatActivity {
             postTitle.setText(title);
             bodyText.setText(body);
 
-            name.setText(userID.toString());
+            GetNameById task = new GetNameById();
+            task.setId(userID);
+            task.setTextView(name);
+            task.execute();
+
             branchName.setText(branchNameEnter);
 
             System.out.println(name.getText().toString());
@@ -356,6 +360,46 @@ public class HomeActivity extends AppCompatActivity {
             }
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             finish();
+        }
+    }
+
+    class GetNameById extends AsyncTask<Void, Void, Void> {
+        private String text;
+        private int id;
+        private TextView textView;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                HttpClient httpclient = HttpClients.createDefault();
+                HttpGet httpget = new HttpGet("http://73.71.24.214:8008/posts/get.php?id=" + id);
+
+                //Execute and get the response.
+                HttpResponse response = httpclient.execute(httpget);
+                HttpEntity entity = response.getEntity();
+
+                InputStream inputStream = entity.getContent();
+                text = "";
+                text = IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
+            } catch (Exception e) {
+                Log.d(TAG, "Exception Caught: " + e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Log.d(TAG, text);
+
+            textView.setText(text);
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public void setTextView(TextView textView) {
+            this.textView = textView;
         }
     }
 }
