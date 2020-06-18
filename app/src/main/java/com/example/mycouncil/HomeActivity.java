@@ -216,8 +216,8 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-            final boolean[] downisBlue = {false};
-            final boolean[]  upisClicked = {false};
+            boolean[] downisBlue = {false};
+            boolean[]  upisClicked = {false};
             upvote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -259,6 +259,15 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 }
             });
+
+            TextView upvoteCounter;
+            TextView downvoteCounter;
+
+            upvoteCounter = convertView.findViewById(R.id.upvoteCounter);
+            downvoteCounter = convertView.findViewById(R.id.downvoteCounter);
+
+            upvoteCounter.setText(String.valueOf(list.get(position).getUpvotes()));
+            downvoteCounter.setText(String.valueOf(list.get(position).getDownvotes()));
 
 
             return convertView;
