@@ -5,12 +5,7 @@
         android:title="Home"
         android:icon="@drawable/ic_android_black_24dp">
     </item>
-
-    <item
-        android:id="@+id/branches"
-        android:title="Find your branches"
-        android:icon="@drawable/ic_android_black_24dp">
-    </item>
+    
 
     <item
         android:id="@+id/post"
