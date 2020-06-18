@@ -30,6 +30,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.mycouncil.Feedback.Post;
 import com.example.mycouncil.Users.Citizen;
 import com.example.mycouncil.Users.Leader;
+import com.example.mycouncil.Users.User;
 import com.google.android.material.navigation.NavigationView;
 
 import org.apache.commons.io.IOUtils;
@@ -47,6 +48,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -60,6 +62,8 @@ public class HomeActivity extends AppCompatActivity {
     ImageView title;
     public static ArrayList<Post> postList = new ArrayList<>();
     public static ArrayList<Post> pollList = new ArrayList<>();
+
+    public static HashMap<Integer, String> idToNameMap = new HashMap<>();
 
     public static final String TAG = "HomeActivity";
 
@@ -256,10 +260,7 @@ public class HomeActivity extends AppCompatActivity {
             postTitle.setText(title);
             bodyText.setText(body);
 
-            GetNameById task = new GetNameById();
-            task.setId(userID);
-            task.setTextView(name);
-            task.execute();
+            name.setText(idToNameMap.get(userID));
 
             branchName.setText(branchNameEnter);
 
@@ -368,46 +369,6 @@ public class HomeActivity extends AppCompatActivity {
             }
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             finish();
-        }
-    }
-
-    class GetNameById extends AsyncTask<Void, Void, Void> {
-        private String text;
-        private int id;
-        private TextView textView;
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try {
-                HttpClient httpclient = HttpClients.createDefault();
-                HttpGet httpget = new HttpGet("http://73.71.24.214:8008/posts/get.php?id=" + id);
-
-                //Execute and get the response.
-                HttpResponse response = httpclient.execute(httpget);
-                HttpEntity entity = response.getEntity();
-
-                InputStream inputStream = entity.getContent();
-                text = "";
-                text = IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
-            } catch (Exception e) {
-                Log.d(TAG, "Exception Caught: " + e);
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            Log.d(TAG, text);
-
-            textView.setText(text);
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public void setTextView(TextView textView) {
-            this.textView = textView;
         }
     }
 }
