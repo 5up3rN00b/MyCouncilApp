@@ -131,7 +131,7 @@ public class ViewPollActivity extends AppCompatActivity {
         });
     }
 
-class PollListAdapter extends ArrayAdapter<Post> {
+class PollListAdapter extends ArrayAdapter<Poll> {
     private ArrayList<Poll> list;
     private Context pollContext;
     int pollResource;
