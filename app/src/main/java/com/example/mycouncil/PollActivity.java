@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +52,11 @@ public class PollActivity extends AppCompatActivity {
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(true);
         }
-
+        final Spinner branchSpinner = findViewById(R.id.branchPoll);
+        branchSpinner.setVisibility(View.VISIBLE);
+        ArrayAdapter<CharSequence> branchAdapter = ArrayAdapter.createFromResource(this, R.array.postBranches, android.R.layout.simple_spinner_item);
+        branchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        branchSpinner.setAdapter(branchAdapter);
         mCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

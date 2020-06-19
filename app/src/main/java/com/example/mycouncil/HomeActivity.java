@@ -205,6 +205,9 @@ public class HomeActivity extends AppCompatActivity {
                 else if (id == R.id.viewPolls){
                     startActivity((new Intent(getApplicationContext(), ViewPollActivity.class)));
                 }
+                else if (id == R.id.createPolls){
+                    startActivity((new Intent(getApplicationContext(), PollActivity.class)));
+                }
                 return true;
             }
         });
