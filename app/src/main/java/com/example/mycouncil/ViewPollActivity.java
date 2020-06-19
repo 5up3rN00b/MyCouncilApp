@@ -57,6 +57,7 @@ public class ViewPollActivity extends AppCompatActivity {
 
     ArrayList <Poll> pollList = new ArrayList<>();
     ArrayList <Choice> listOfChoices = new ArrayList<>();
+    ArrayList <Choice> listOfChoices1 = new ArrayList<>();
     DrawerLayout d1;
     ActionBarDrawerToggle abdt;
 
@@ -68,14 +69,20 @@ public class ViewPollActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_polls);
 
-        listOfChoices.add(new Choice ("A", 4));
-        listOfChoices.add(new Choice ("B", 23));
-        listOfChoices.add(new Choice ("C", 43));
-        listOfChoices.add(new Choice ("D", 15));
-        listOfChoices.add(new Choice ("E", 15));
+        listOfChoices.add(new Choice ("Funding Schools", 3));
+        listOfChoices.add(new Choice ("Create new parks", 1));
+        listOfChoices.add(new Choice ("Improve roads/ infrastructure", 0));
+        listOfChoices.add(new Choice ("Homeless Shelters", 1));
+        listOfChoices.add(new Choice ("Building residential neighborhoods", 0));
 
-        pollList.add(new Poll("Test", listOfChoices));
-        pollList.add(new Poll("TEst 2", listOfChoices));
+        listOfChoices1.add(new Choice ("Not at all", 3));
+        listOfChoices1.add(new Choice ("Could be better", 1));
+        listOfChoices1.add(new Choice ("It's alright", 0));
+        listOfChoices1.add(new Choice ("I like it", 1));
+        listOfChoices1.add(new Choice ("It's the best!", 5));
+
+        pollList.add(new Poll("What should we spend our additional budget on?", listOfChoices));
+        pollList.add(new Poll("How satisfied are you with your community?", listOfChoices1));
 
         if (LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
@@ -161,6 +168,8 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         TextView pollTitle;
         RadioButton one, two, three, four, five;
         ProgressBar pOne, pTwo, pThree, pFour, pFive;
+        Integer op1, op2, op3, op4, op5;
+        TextView t1,t2,t3,t4,t5;
 
         pollTitle = convertView.findViewById(R.id.pollTitleTextView);
         one = convertView.findViewById(R.id.pollOption1);
@@ -175,6 +184,12 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         pFour = convertView.findViewById(R.id.pollOption4ProgressBar);
         pFive = convertView.findViewById(R.id.pollOption5ProgressBar);
 
+        t1 = convertView.findViewById(R.id.percentDisplay1);
+        t2 = convertView.findViewById(R.id.percentDisplay2);
+        t3 = convertView.findViewById(R.id.percentDisplay3);
+        t4 = convertView.findViewById(R.id.percentDisplay4);
+        t5 = convertView.findViewById(R.id.percentDisplay5);
+
         pollTitle.setText(question);
         one.setText(optionOne);
         two.setText(optionTwo);
@@ -182,8 +197,39 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         four.setText(optionFour);
         five.setText(noneOfTheAboveOption);
 
+        Integer totalVotes = list.get(position).getTotalVotes();
+
+        op1 = 100 * list.get(position).getChoice(0).getVotes() / totalVotes ;
+        op2 = 100 * list.get(position).getChoice(1).getVotes() / totalVotes ;
+        op3 = 100 * list.get(position).getChoice(2).getVotes() / totalVotes ;
+        op4 = 100 * list.get(position).getChoice(3).getVotes() / totalVotes ;
+        op5 = 100 * list.get(position).getChoice(4).getVotes() / totalVotes ;
+
+        pOne.setProgress(op1);
+        pTwo.setProgress(op2);
+        pThree.setProgress(op3);
+        pFour.setProgress(op4);
+        pFive.setProgress(op5);
+
+        t1.setText(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes() + "%");
+        t2.setText(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes() + "%");
+        t3.setText(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes() + "%");
+        t4.setText(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes() + "%");
+        t5.setText(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes() + "%");
+
+
         one.setOnClickListener(view -> {
-            pOne.setProgress(pOne.getProgress() + 10);
+            list.get(position).getChoice(0).addVote();
+            pOne.setProgress(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes());
+            pTwo.setProgress(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes());
+            pThree.setProgress(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes());
+            pFour.setProgress(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes());
+            pFive.setProgress(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes());
+            t1.setText(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t2.setText(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t3.setText(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t4.setText(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t5.setText(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes() + "%");
             one.setChecked(true);
             two.setChecked(false);
             three.setChecked(false);
@@ -191,8 +237,20 @@ class PollListAdapter extends ArrayAdapter<Poll> {
             five.setChecked(false);
         });
 
+
+
         two.setOnClickListener(view -> {
-            pTwo.setProgress(pTwo.getProgress()+10);
+            list.get(position).getChoice(1).addVote();
+            pOne.setProgress(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes());
+            pTwo.setProgress(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes());
+            pThree.setProgress(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes());
+            pFour.setProgress(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes());
+            pFive.setProgress(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes());
+            t1.setText(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t2.setText(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t3.setText(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t4.setText(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t5.setText(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes() + "%");
             two.setChecked(true);
             three.setChecked(false);
             four.setChecked(false);
@@ -201,7 +259,18 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         });
 
         three.setOnClickListener(view -> {
-            pThree.setProgress(pThree.getProgress()  + 10);
+            list.get(position).getChoice(2).addVote();
+            pOne.setProgress(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes());
+            pTwo.setProgress(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes());
+            pThree.setProgress(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes());
+            pFour.setProgress(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes());
+            pFive.setProgress(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes());
+            t1.setText(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t2.setText(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t3.setText(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t4.setText(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t5.setText(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes() + "%");
+            pThree.setProgress(op3);
             three.setChecked(true);
             two.setChecked(false);
             four.setChecked(false);
@@ -210,7 +279,17 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         });
 
         four.setOnClickListener(view -> {
-            pFour.setProgress(pFour.getProgress() + 10);
+            list.get(position).getChoice(3).addVote();
+            pOne.setProgress(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes());
+            pTwo.setProgress(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes());
+            pThree.setProgress(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes());
+            pFour.setProgress(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes());
+            pFive.setProgress(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes());
+            t1.setText(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t2.setText(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t3.setText(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t4.setText(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t5.setText(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes() + "%");
             four.setChecked(true);
             two.setChecked(false);
             three.setChecked(false);
@@ -220,7 +299,17 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         });
 
         five.setOnClickListener(view -> {
-            pFive.setProgress(pFive.getProgress() + 10);
+            list.get(position).getChoice(4).addVote();
+            pOne.setProgress(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes());
+            pTwo.setProgress(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes());
+            pThree.setProgress(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes());
+            pFour.setProgress(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes());
+            pFive.setProgress(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes());
+            t1.setText(100 *  list.get(position).getChoice(0).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t2.setText(100 *  list.get(position).getChoice(1).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t3.setText(100 *  list.get(position).getChoice(2).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t4.setText(100 *  list.get(position).getChoice(3).getVotes()/ list.get(position).getTotalVotes() + "%");
+            t5.setText(100 *  list.get(position).getChoice(4).getVotes()/ list.get(position).getTotalVotes() + "%");
             five.setChecked(true);
             two.setChecked(false);
             three.setChecked(false);
@@ -228,9 +317,6 @@ class PollListAdapter extends ArrayAdapter<Poll> {
             one.setChecked(false);
         });
 
-        System.out.println(one.getText());
-
-        System.out.println(pollTitle.getText());
 
         return convertView;
     }
