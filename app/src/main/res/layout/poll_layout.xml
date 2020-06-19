@@ -126,6 +126,7 @@
             android:id="@+id/percentDisplay1"
             android:layout_width="35dp"
             android:layout_height="30dp"
+            android:visibility="invisible"
             android:text="20%"
             android:paddingLeft="5dp"/>
 
@@ -167,6 +168,7 @@
             android:id="@+id/percentDisplay2"
             android:layout_width="35dp"
             android:layout_height="30dp"
+            android:visibility="invisible"
             android:text="20%"
             android:paddingLeft="5dp"/>
 
@@ -209,6 +211,7 @@
             android:layout_width="35dp"
             android:layout_height="30dp"
             android:text="20%"
+            android:visibility="invisible"
             android:paddingLeft="5dp"/>
 
     </LinearLayout>
@@ -250,6 +253,7 @@
             android:layout_width="35dp"
             android:layout_height="30dp"
             android:text="20%"
+            android:visibility="invisible"
             android:paddingLeft="5dp"/>
 
     </LinearLayout>
@@ -292,6 +296,7 @@
             android:layout_width="35dp"
             android:layout_height="30dp"
             android:text="20%"
+            android:visibility="invisible"
             android:paddingLeft="5dp"/>
 
     </LinearLayout>
