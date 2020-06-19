@@ -16,6 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +55,6 @@ import java.util.List;
 
 public class ViewPollActivity extends AppCompatActivity {
 
-    ListView viewPollList;
     ArrayList <Poll> pollList = new ArrayList<>();
     ArrayList <Choice> listOfChoices = new ArrayList<>();
     DrawerLayout d1;
@@ -87,7 +88,7 @@ public class ViewPollActivity extends AppCompatActivity {
         }
 
         for (Poll p: pollList){
-            System.out.println(p.getTitle());
+//            System.out.println(p.getTitle());
         }
 
 
@@ -127,8 +128,8 @@ public class ViewPollActivity extends AppCompatActivity {
                 return true;
             }
         });
-        viewPollList = findViewById(R.id.viewPollList);
-        PollListAdapter adapter = new PollListAdapter(this, R.layout.poll_layout, pollList);
+        ListView viewPollList = findViewById(R.id.viewPollList);
+        PollListAdapter adapter = new PollListAdapter(ViewPollActivity.this, R.layout.poll_layout, pollList);
         viewPollList.setAdapter(adapter);
     }
 
@@ -138,7 +139,7 @@ class PollListAdapter extends ArrayAdapter<Poll> {
     int pollResource;
 
     public PollListAdapter(@NonNull Context context, int resource, ArrayList<Poll> objects){
-        super(context, resource);
+        super(context, resource, objects);
         pollContext = context;
         pollResource = resource;
         list = objects;
@@ -158,7 +159,8 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         convertView = inflater.inflate(pollResource, parent, false);
 
         TextView pollTitle;
-        Button one, two, three, four, five;
+        RadioButton one, two, three, four, five;
+        ProgressBar pOne, pTwo, pThree, pFour, pFive;
 
         pollTitle = convertView.findViewById(R.id.pollTitleTextView);
         one = convertView.findViewById(R.id.pollOption1);
@@ -167,6 +169,12 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         four = convertView.findViewById(R.id.pollOption4);
         five = convertView.findViewById(R.id.noneOfTheAboveOption);
 
+        pOne = convertView.findViewById(R.id.pollOption1ProgressBar);
+        pTwo = convertView.findViewById(R.id.pollOption2ProgressBar);
+        pThree = convertView.findViewById(R.id.pollOption3ProgressBar);
+        pFour = convertView.findViewById(R.id.pollOption4ProgressBar);
+        pFive = convertView.findViewById(R.id.pollOption5ProgressBar);
+
         pollTitle.setText(question);
         one.setText(optionOne);
         two.setText(optionTwo);
@@ -174,9 +182,56 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         four.setText(optionFour);
         five.setText(noneOfTheAboveOption);
 
-        System.out.println(one);
+        one.setOnClickListener(view -> {
+            pOne.setProgress(pOne.getProgress() + 10);
+            one.setChecked(true);
+            two.setChecked(false);
+            three.setChecked(false);
+            four.setChecked(false);
+            five.setChecked(false);
+        });
+
+        two.setOnClickListener(view -> {
+            pTwo.setProgress(pTwo.getProgress()+10);
+            two.setChecked(true);
+            three.setChecked(false);
+            four.setChecked(false);
+            five.setChecked(false);
+            one.setChecked(false);
+        });
+
+        three.setOnClickListener(view -> {
+            pThree.setProgress(pThree.getProgress()  + 10);
+            three.setChecked(true);
+            two.setChecked(false);
+            four.setChecked(false);
+            five.setChecked(false);
+            one.setChecked(false);
+        });
+
+        four.setOnClickListener(view -> {
+            pFour.setProgress(pFour.getProgress() + 10);
+            four.setChecked(true);
+            two.setChecked(false);
+            three.setChecked(false);
+            five.setChecked(false);
+            one.setChecked(false);
+
+        });
+
+        five.setOnClickListener(view -> {
+            pFive.setProgress(pFive.getProgress() + 10);
+            five.setChecked(true);
+            two.setChecked(false);
+            three.setChecked(false);
+            four.setChecked(false);
+            one.setChecked(false);
+        });
+
+        System.out.println(one.getText());
 
         System.out.println(pollTitle.getText());
+
         return convertView;
     }
 }
