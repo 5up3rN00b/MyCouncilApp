@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="500dp"
-    android:background="#00FFFFFF"
+    android:background="#FFFFFF"
     android:divider="@null"
     android:orientation="vertical"
     android:paddingLeft="16dp"
@@ -78,14 +78,14 @@
         <TextView
             android:id="@+id/pollTitleTextView"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:fontFamily="@font/bebasneue_bold"
             android:gravity=""
             android:paddingLeft="15dp"
             android:text="Poll Title"
-            android:textSize="45sp" />
+            android:textSize="40sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -122,6 +122,13 @@
             android:max="100"
             android:progress="0" />
 
+        <TextView
+            android:id="@+id/percentDisplay1"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:text="20%"
+            android:paddingLeft="5dp"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -155,6 +162,13 @@
             android:layout_weight="1"
             android:max="100"
             android:progress="0" />
+
+        <TextView
+            android:id="@+id/percentDisplay2"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:text="20%"
+            android:paddingLeft="5dp"/>
 
     </LinearLayout>
 
@@ -190,6 +204,13 @@
             android:max="100"
             android:progress="0" />
 
+        <TextView
+            android:id="@+id/percentDisplay3"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:text="20%"
+            android:paddingLeft="5dp"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -223,6 +244,13 @@
             android:layout_weight="1"
             android:max="100"
             android:progress="0" />
+
+        <TextView
+            android:id="@+id/percentDisplay4"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:text="20%"
+            android:paddingLeft="5dp"/>
 
     </LinearLayout>
 
@@ -258,6 +286,13 @@
             android:layout_weight="1"
             android:max="100"
             android:progress="0" />
+
+        <TextView
+            android:id="@+id/percentDisplay5"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:text="20%"
+            android:paddingLeft="5dp"/>
 
     </LinearLayout>
 

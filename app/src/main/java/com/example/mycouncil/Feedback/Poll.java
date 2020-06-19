@@ -23,7 +23,7 @@ public class Poll {
         return choices.get(index);
     }
 
-    public static int getTotalVotes(ArrayList <Choice> choices){
+    public int getTotalVotes(){
         int total = 0;
         for (Choice c : choices){
             total += c.getVotes();
