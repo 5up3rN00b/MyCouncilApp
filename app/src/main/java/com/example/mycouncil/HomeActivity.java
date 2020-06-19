@@ -2,8 +2,6 @@ package com.example.mycouncil;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 
 import android.os.Bundle;
@@ -19,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,30 +24,21 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.mycouncil.Feedback.Poll;
 import com.example.mycouncil.Feedback.Post;
-import com.example.mycouncil.Users.Citizen;
-import com.example.mycouncil.Users.Leader;
-import com.example.mycouncil.Users.User;
 import com.google.android.material.navigation.NavigationView;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
-
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -61,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     ListView homeListView;
     ImageView title;
     public static ArrayList<Post> postList = new ArrayList<>();
-    public static ArrayList<Post> pollList = new ArrayList<>();
+    public static ArrayList<Poll> pollList = new ArrayList<com.example.mycouncil.Feedback.Poll>();
 
     public static HashMap<Integer, String> idToNameMap = new HashMap<>();
 
