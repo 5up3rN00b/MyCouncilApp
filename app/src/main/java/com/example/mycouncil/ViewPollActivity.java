@@ -197,17 +197,8 @@ public class ViewPollActivity extends AppCompatActivity {
             op4 = 100 * list.get(position).getChoice(3).getVotes() / totalVotes;
             op5 = 100 * list.get(position).getChoice(4).getVotes() / totalVotes;
 
-            pOne.setProgress(op1);
-            pTwo.setProgress(op2);
-            pThree.setProgress(op3);
-            pFour.setProgress(op4);
-            pFive.setProgress(op5);
 
-            t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
-            t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
-            t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
-            t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
-            t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
+
 
 
             one.setOnClickListener(view -> {
@@ -217,6 +208,11 @@ public class ViewPollActivity extends AppCompatActivity {
                 pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
                 pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
                 pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                t1.setVisibility(View.VISIBLE);
+                t2.setVisibility(View.VISIBLE);
+                t3.setVisibility(View.VISIBLE);
+                t4.setVisibility(View.VISIBLE);
+                t5.setVisibility(View.VISIBLE);
                 t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
                 t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
                 t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
@@ -237,6 +233,11 @@ public class ViewPollActivity extends AppCompatActivity {
                 pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
                 pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
                 pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                t1.setVisibility(View.VISIBLE);
+                t2.setVisibility(View.VISIBLE);
+                t3.setVisibility(View.VISIBLE);
+                t4.setVisibility(View.VISIBLE);
+                t5.setVisibility(View.VISIBLE);
                 t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
                 t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
                 t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
@@ -256,6 +257,11 @@ public class ViewPollActivity extends AppCompatActivity {
                 pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
                 pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
                 pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                t1.setVisibility(View.VISIBLE);
+                t2.setVisibility(View.VISIBLE);
+                t3.setVisibility(View.VISIBLE);
+                t4.setVisibility(View.VISIBLE);
+                t5.setVisibility(View.VISIBLE);
                 t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
                 t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
                 t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
@@ -276,6 +282,11 @@ public class ViewPollActivity extends AppCompatActivity {
                 pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
                 pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
                 pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                t1.setVisibility(View.VISIBLE);
+                t2.setVisibility(View.VISIBLE);
+                t3.setVisibility(View.VISIBLE);
+                t4.setVisibility(View.VISIBLE);
+                t5.setVisibility(View.VISIBLE);
                 t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
                 t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
                 t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
@@ -298,6 +309,11 @@ public class ViewPollActivity extends AppCompatActivity {
                 pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
                 pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
                 pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                t1.setVisibility(View.VISIBLE);
+                t2.setVisibility(View.VISIBLE);
+                t3.setVisibility(View.VISIBLE);
+                t4.setVisibility(View.VISIBLE);
+                t5.setVisibility(View.VISIBLE);
                 t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
                 t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
                 t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
