@@ -253,8 +253,6 @@ public class HomeActivity extends AppCompatActivity {
 
             branchName.setText(branchNameEnter);
 
-            System.out.println(name.getText().toString());
-            System.out.println(branchName.getText().toString());
 
             TextView upvoteCounter;
             TextView downvoteCounter;
