@@ -234,10 +234,6 @@ public class HomeActivity extends AppCompatActivity {
             String branchNameEnter = list.get(position).getBranch();
             Integer userID = list.get(position).getUserId();
 
-
-
-
-
             LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(postResource, parent, false);
 
@@ -318,13 +314,6 @@ public class HomeActivity extends AppCompatActivity {
 
                 }
             });
-
-
-
-
-
-
-
             return convertView;
         }
     }
