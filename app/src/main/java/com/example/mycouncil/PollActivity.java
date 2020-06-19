@@ -1,31 +1,26 @@
 package com.example.mycouncil;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.mycouncil.Feedback.Post;
+import com.example.mycouncil.Feedback.Choice;
+import com.example.mycouncil.Feedback.Poll;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-import static com.example.mycouncil.HomeActivity.postList;
+import static com.example.mycouncil.HomeActivity.pollList;
 
 public class PollActivity extends AppCompatActivity {
 
@@ -61,6 +56,12 @@ public class PollActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mQuestion.getText().toString()!=null && mOption1.getText().toString() != null && mOption2.getText().toString() != null && mOption3.getText().toString() != null && mOption4.getText().toString() != null ){
+                    ArrayList<Choice> choicesList = new ArrayList<>();
+                    choicesList.add(new Choice(mOption1.getText().toString(), 0));
+                    choicesList.add(new Choice(mOption2.getText().toString(), 0));
+                    choicesList.add(new Choice(mOption3.getText().toString(), 0));
+                    choicesList.add(new Choice(mOption4.getText().toString(), 0));
+                    pollList.add(new Poll(mQuestion.getText().toString(), choicesList));
                     System.out.println(mQuestion.getText().toString() + " " + mOption1.getText().toString() + " " + mOption2.getText().toString()+ " " + mOption3.getText().toString() + " " + mOption4.getText().toString());
                 }
                 else{

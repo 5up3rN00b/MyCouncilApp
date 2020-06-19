@@ -90,9 +90,7 @@ public class ViewPollActivity extends AppCompatActivity {
             System.out.println(p.getTitle());
         }
 
-        viewPollList = findViewById(R.id.viewPollList);
-        PollListAdapter ladapter = new PollListAdapter(this, R.layout.poll_layout, pollList);
-        viewPollList.setAdapter(ladapter);
+
 
         final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
 
@@ -129,6 +127,9 @@ public class ViewPollActivity extends AppCompatActivity {
                 return true;
             }
         });
+        viewPollList = findViewById(R.id.viewPollList);
+        PollListAdapter adapter = new PollListAdapter(this, R.layout.poll_layout, pollList);
+        viewPollList.setAdapter(adapter);
     }
 
 class PollListAdapter extends ArrayAdapter<Poll> {
@@ -176,7 +177,6 @@ class PollListAdapter extends ArrayAdapter<Poll> {
         System.out.println(one);
 
         System.out.println(pollTitle.getText());
-
         return convertView;
     }
 }
