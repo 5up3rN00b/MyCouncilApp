@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mycouncil.Users.Citizen;
@@ -34,7 +35,8 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button mRegister, mLogin;
+    private Button mLogin;
+    TextView mRegister;
     private EditText loginEmailAddress, loginPassword;
     private static final String TAG = "LoginActivity";
 
