@@ -21,7 +21,8 @@
     <item
         android:id="@+id/createPolls"
         android:title="Create Polls"
-        android:icon="@drawable/ic_android_black_24dp">
+        android:icon="@drawable/ic_android_black_24dp"
+        android:visible="false">
     </item>
     <item
         android:id="@+id/viewPolls"

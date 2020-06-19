@@ -103,9 +103,16 @@ public class CreateActivity extends AppCompatActivity {
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        if (LoginActivity.isCitizen){
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.getMenu().findItem(R.id.poll).setVisible(false);
+            navigationView.getMenu().findItem(R.id.viewPolls).setVisible(false);
+        }
+
         if (!LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(true);
+            navigationView.getMenu().findItem(R.id.viewPolls).setVisible(true);
         }
 
         final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
