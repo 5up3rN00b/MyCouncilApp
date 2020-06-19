@@ -255,7 +255,7 @@ public class HomeActivity extends AppCompatActivity {
 
             postTitle.setText(title);
             bodyText.setText(body);
-
+            pfp.setImageResource(R.drawable.ellipse12);
             name.setText(idToNameMap.get(userID));
 
             branchName.setText(branchNameEnter);
@@ -268,6 +268,8 @@ public class HomeActivity extends AppCompatActivity {
 
             upvoteCounter = convertView.findViewById(R.id.upvoteCounter);
             downvoteCounter = convertView.findViewById(R.id.downvoteCounter);
+            upvoteCounter.setText(String.valueOf(list.get(position).getUpvotes()));
+            downvoteCounter.setText(String.valueOf(list.get(position).getDownvotes()));
 
             boolean[] downisBlue = {false};
             boolean[]  upisClicked = {false};
