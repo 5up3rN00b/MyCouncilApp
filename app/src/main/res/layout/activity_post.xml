@@ -61,7 +61,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/blueBackground"
             app:layout_constraintVertical_bias="0.027"
-            app:srcCompat="@drawable/mycouncilcreate" />
+            app:srcCompat="@drawable/mycouncilcreatepost" />
 
         <TextView
             android:id="@+id/createPostTextView"

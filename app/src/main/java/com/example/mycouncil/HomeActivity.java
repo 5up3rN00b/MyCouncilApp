@@ -159,7 +159,7 @@ public class HomeActivity extends AppCompatActivity {
         if (LoginActivity.isCitizen){
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(false);
-            navigationView.getMenu().findItem(R.id.viewPolls).setVisible(false);
+            navigationView.getMenu().findItem(R.id.viewPolls).setVisible(true);
         }
 
         if (!LoginActivity.isCitizen){
@@ -261,8 +261,6 @@ public class HomeActivity extends AppCompatActivity {
 
             branchName.setText(branchNameEnter);
 
-            System.out.println(name.getText().toString());
-            System.out.println(branchName.getText().toString());
 
             int post_id = list.get(position).getPostId();
 

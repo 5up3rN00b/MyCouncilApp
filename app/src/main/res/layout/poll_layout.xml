@@ -65,7 +65,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="496dp"
+        android:layout_height="77dp"
         android:layout_weight="1"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,12 +77,12 @@
 
         <TextView
             android:id="@+id/pollTitleTextView"
-            android:gravity=""
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:fontFamily="@font/bebasneue_bold"
+            android:gravity=""
             android:paddingLeft="15dp"
             android:text="Poll Title"
             android:textSize="45sp" />
@@ -91,27 +91,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <RadioButton
             android:id="@+id/pollOption1"
             android:layout_width="80dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/path1"
             android:bufferType="normal"
-            android:button="@drawable/whitecircle"
-            android:checked="false"
+            android:checked="true"
             android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="Option 1"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
 
         <ProgressBar
             android:id="@+id/pollOption1ProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:indeterminate="false"
             android:max="100"
@@ -122,27 +127,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <RadioButton
             android:id="@+id/pollOption2"
             android:layout_width="80dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/path1"
             android:bufferType="normal"
-            android:button="@drawable/whitecircle"
             android:checked="false"
             android:paddingLeft="5dp"
             android:text="Option 2"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF" />
 
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
+
         <ProgressBar
             android:id="@+id/pollOption2ProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:max="100"
             android:progress="0" />
@@ -152,27 +161,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <RadioButton
             android:id="@+id/pollOption3"
             android:layout_width="80dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/path1"
             android:bufferType="normal"
-            android:button="@drawable/whitecircle"
             android:checked="false"
             android:paddingLeft="5dp"
             android:text="Option 3"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF" />
 
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
+
         <ProgressBar
             android:id="@+id/pollOption3ProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:max="100"
             android:progress="0" />
@@ -182,27 +195,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <RadioButton
             android:id="@+id/pollOption4"
             android:layout_width="80dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/path1"
             android:bufferType="normal"
-            android:button="@drawable/whitecircle"
             android:checked="false"
             android:paddingLeft="5dp"
             android:text="Option 4"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF" />
 
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
+
         <ProgressBar
             android:id="@+id/pollOption4ProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:max="100"
             android:progress="0" />
@@ -211,29 +228,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <RadioButton
             android:id="@+id/noneOfTheAboveOption"
             android:layout_width="80dp"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/path1"
             android:bufferType="normal"
-            android:button="@drawable/whitecircle"
             android:checked="false"
             android:paddingLeft="5dp"
             android:text="None of the Above"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF" />
 
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
+
         <ProgressBar
-            android:id="@+id/noneOfTheAboveOptionProgressBar"
+            android:id="@+id/pollOption5ProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:max="100"
             android:progress="0" />
