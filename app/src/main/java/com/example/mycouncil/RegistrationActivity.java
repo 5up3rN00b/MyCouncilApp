@@ -97,12 +97,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 mCitizen.setTextColor(Color.WHITE);
             }
         });
-        mHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-            }
-        });
 
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
