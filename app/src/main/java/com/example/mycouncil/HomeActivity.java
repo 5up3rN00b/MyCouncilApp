@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,14 +32,21 @@ import com.google.android.material.navigation.NavigationView;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -256,6 +264,20 @@ public class HomeActivity extends AppCompatActivity {
             System.out.println(name.getText().toString());
             System.out.println(branchName.getText().toString());
 
+            int post_id = list.get(position).getPostId();
+
+            if (LoginActivity.upvoteClicked.get(position)) {
+                upvote.setBackgroundResource(R.drawable.arrowup_blue);
+            } else {
+                upvote.setBackgroundResource(R.drawable.arrowup);
+            }
+
+            if (LoginActivity.downvoteClicked.get(position)) {
+                downvote.setBackgroundResource(R.drawable.arrowdown_blue);
+            } else {
+                downvote.setBackgroundResource(R.drawable.arrowdown);
+            }
+
             TextView upvoteCounter;
             TextView downvoteCounter;
 
@@ -264,56 +286,42 @@ public class HomeActivity extends AppCompatActivity {
             upvoteCounter.setText(String.valueOf(list.get(position).getUpvotes()));
             downvoteCounter.setText(String.valueOf(list.get(position).getDownvotes()));
 
-            boolean[] downisBlue = {false};
-            boolean[]  upisClicked = {false};
             upvote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    downvote.setBackgroundResource(R.drawable.arrowdown);
-
-                    if(downisBlue[0]){
-                        list.get(position).subDownvotes();
-                    }
-                    downisBlue[0] = false;
-                    if(upisClicked[0]){
-                        list.get(position).subUpvotes();
+                    if (LoginActivity.upvoteClicked.get(position)) {
                         upvote.setBackgroundResource(R.drawable.arrowup);
-                        upisClicked[0] = false;
-                    } else{
-                        list.get(position).addUpvotes();
+                        list.get(position).subUpvotes();
+                        new UpdateVotesTask(-1, 0, post_id).execute();
+                    } else {
                         upvote.setBackgroundResource(R.drawable.arrowup_blue);
-                        upisClicked[0] = true;
+                        list.get(position).addUpvotes();
+                        new UpdateVotesTask(1, 0, post_id).execute();
                     }
-                    upvoteCounter.setText(String.valueOf(list.get(position).getUpvotes()));
-                    downvoteCounter.setText(String.valueOf(list.get(position).getDownvotes()));
+
+                    LoginActivity.upvoteClicked.set(position, !LoginActivity.upvoteClicked.get(position));
+                    upvoteCounter.setText(Integer.toString(list.get(position).getUpvotes()));
                 }
             });
 
             downvote.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    upvote.setBackgroundResource(R.drawable.arrowup);
-
-                    if(upisClicked[0]){
-                        list.get(position).subUpvotes();
-                    }
-                    upisClicked[0] = false;
-
-                    if(downisBlue[0]){
-                        list.get(position).subDownvotes();
+                    if (LoginActivity.downvoteClicked.get(position)) {
                         downvote.setBackgroundResource(R.drawable.arrowdown);
-                        downisBlue[0] = false;
-                    } else{
-                        list.get(position).addDownvotes();
-
+                        list.get(position).subDownvotes();
+                        new UpdateVotesTask(0, -1, post_id).execute();
+                    } else {
                         downvote.setBackgroundResource(R.drawable.arrowdown_blue);
-                        downisBlue[0] = true;
+                        list.get(position).addDownvotes();
+                        new UpdateVotesTask(0, 1, post_id).execute();
                     }
-                    upvoteCounter.setText(String.valueOf(list.get(position).getUpvotes()));
-                    downvoteCounter.setText(String.valueOf(list.get(position).getDownvotes()));
 
+                    LoginActivity.downvoteClicked.set(position, !LoginActivity.downvoteClicked.get(position));
+                    downvoteCounter.setText(Integer.toString(list.get(position).getDownvotes()));
                 }
             });
+
             return convertView;
         }
     }
@@ -350,9 +358,68 @@ public class HomeActivity extends AppCompatActivity {
                 String[] attributes = posts[i].split("\\|");
                 //System.out.println(Arrays.toString(attributes));
                 postList.add(new Post(attributes[2], attributes[3], attributes[6], Integer.parseInt(attributes[1]), Integer.parseInt(attributes[0]), Integer.parseInt(attributes[4]), Integer.parseInt(attributes[5])));
+
+                if (i >= LoginActivity.upvoteClicked.size()) {
+                    LoginActivity.upvoteClicked.add(false);
+                }
+
+                if (i >= LoginActivity.downvoteClicked.size()) {
+                    LoginActivity.downvoteClicked.add(false);
+                }
+
+                Collections.sort(postList, new Comparator<Post>() {
+                    @Override
+                    public int compare(Post o1, Post o2) {
+                        return o2.getTotalVotes() - o1.getTotalVotes();
+                    }
+                });
             }
+
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             finish();
+        }
+    }
+
+    class UpdateVotesTask extends AsyncTask<Void, Void, Void> {
+        private String text;
+        private int upvotes, downvotes, id;
+
+        public UpdateVotesTask(int upvotes, int downvotes, int id) {
+            this.upvotes = upvotes;
+            this.downvotes = downvotes;
+            this.id = id;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                HttpClient httpclient = HttpClients.createDefault();
+                HttpPost httppost = new HttpPost("http://73.71.24.214:8008/posts/add.php");
+
+                List<NameValuePair> params = new ArrayList<NameValuePair>(4);
+                params.add(new BasicNameValuePair("updateVotes", "true"));
+                params.add(new BasicNameValuePair("upvotes", Integer.toString(upvotes)));
+                params.add(new BasicNameValuePair("downvotes", Integer.toString(downvotes)));
+                params.add(new BasicNameValuePair("id", Integer.toString(id)));
+
+                httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+
+                //Execute and get the response.
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity entity = response.getEntity();
+
+                InputStream inputStream = entity.getContent();
+                text = "";
+                text = IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
+            } catch (Exception e) {
+                Log.d(TAG, "Exception Caught: " + e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Log.d(TAG, "Added upvotes and downvotes");
         }
     }
 }

@@ -42,6 +42,9 @@ public class LoginActivity extends AppCompatActivity {
     public static User user;
     public static boolean isCitizen;
 
+    public static ArrayList<Boolean> upvoteClicked = new ArrayList<>();
+    public static ArrayList<Boolean> downvoteClicked = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
