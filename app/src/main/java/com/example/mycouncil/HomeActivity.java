@@ -103,6 +103,10 @@ public class HomeActivity extends AppCompatActivity {
                     swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                         @Override
                         public void onRefresh() {
+                            for(Post p : postList){
+                                new UpdateVotesTask(p.getUpvotes(),p.getDownvotes(),p.getPostId()).execute();
+                            }
+
                             homePostList.setAdapter(adapter);
                             swiper_no_swiping.setRefreshing(false);
                         }
@@ -124,6 +128,9 @@ public class HomeActivity extends AppCompatActivity {
                     swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                         @Override
                         public void onRefresh() {
+                            for(Post p : policeList){
+                                new UpdateVotesTask(p.getUpvotes(),p.getDownvotes(),p.getPostId()).execute();
+                            }
                             homePostList.setAdapter(adapter);
                             swiper_no_swiping.setRefreshing(false);
                         }
