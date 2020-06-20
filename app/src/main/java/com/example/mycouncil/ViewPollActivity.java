@@ -72,14 +72,14 @@ public class ViewPollActivity extends AppCompatActivity {
         listOfChoices.add(new Choice("Homeless Shelters", 1));
         listOfChoices.add(new Choice("Building residential neighborhoods", 0));
 
-        listOfChoices1.add(new Choice("Not at all", 3));
-        listOfChoices1.add(new Choice("Could be better", 1));
-        listOfChoices1.add(new Choice("It's alright", 0));
-        listOfChoices1.add(new Choice("I like it", 1));
-        listOfChoices1.add(new Choice("It's the best!", 5));
+        listOfChoices1.add(new Choice("0-10000 dollars", 3));
+        listOfChoices1.add(new Choice("10000-45000 dollars", 1));
+        listOfChoices1.add(new Choice("45000 - 100000 dollars", 0));
+        listOfChoices1.add(new Choice("100000 - 2000000 dollars", 1));
+        listOfChoices1.add(new Choice("200000 + dollars", 5));
 
         pollList.add(new Poll("What should we spend our additional budget on?", listOfChoices));
-        pollList.add(new Poll("How satisfied are you with your community?", listOfChoices1));
+        pollList.add(new Poll("What is your annual household income?", listOfChoices1));
 
         if (LoginActivity.isCitizen) {
             NavigationView navigationView = findViewById(R.id.nav_view);
@@ -89,10 +89,6 @@ public class ViewPollActivity extends AppCompatActivity {
         if (!LoginActivity.isCitizen) {
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.getMenu().findItem(R.id.poll).setVisible(true);
-        }
-
-        for (Poll p : pollList) {
-//            System.out.println(p.getTitle());
         }
 
 
@@ -160,7 +156,6 @@ public class ViewPollActivity extends AppCompatActivity {
             TextView pollTitle;
             RadioButton one, two, three, four, five;
             ProgressBar pOne, pTwo, pThree, pFour, pFive;
-            Integer op1, op2, op3, op4, op5;
             TextView t1, t2, t3, t4, t5;
 
             pollTitle = convertView.findViewById(R.id.pollTitleTextView);
@@ -191,140 +186,175 @@ public class ViewPollActivity extends AppCompatActivity {
 
             Integer totalVotes = list.get(position).getTotalVotes();
 
-            op1 = 100 * list.get(position).getChoice(0).getVotes() / totalVotes;
-            op2 = 100 * list.get(position).getChoice(1).getVotes() / totalVotes;
-            op3 = 100 * list.get(position).getChoice(2).getVotes() / totalVotes;
-            op4 = 100 * list.get(position).getChoice(3).getVotes() / totalVotes;
-            op5 = 100 * list.get(position).getChoice(4).getVotes() / totalVotes;
+            ArrayList <RadioButton> buttons = new ArrayList<>();
+            buttons.add(one);
+            buttons.add(two);
+            buttons.add(three);
+            buttons.add(four);
+            buttons.add(five);
 
-
-
+            Choice clicked = new Choice ("a",0);
 
 
             one.setOnClickListener(view -> {
-                list.get(position).getChoice(0).addVote();
-                pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
-                pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
-                pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
-                pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
-                pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
-                t1.setVisibility(View.VISIBLE);
-                t2.setVisibility(View.VISIBLE);
-                t3.setVisibility(View.VISIBLE);
-                t4.setVisibility(View.VISIBLE);
-                t5.setVisibility(View.VISIBLE);
-                t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
-                t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
-                t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
-                t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
-                t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
-                one.setChecked(true);
-                two.setChecked(false);
-                three.setChecked(false);
-                four.setChecked(false);
-                five.setChecked(false);
+                if (clicked.isAlreadyClicked()){
+                    if (clicked.getClicked()!=1) {
+                        one.setChecked(false);
+                    }
+                }
+                if (!clicked.isAlreadyClicked()) {
+                    list.get(position).getChoice(0).addVote();
+                    pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
+                    pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
+                    pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
+                    pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
+                    pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                    t1.setVisibility(View.VISIBLE);
+                    t2.setVisibility(View.VISIBLE);
+                    t3.setVisibility(View.VISIBLE);
+                    t4.setVisibility(View.VISIBLE);
+                    t5.setVisibility(View.VISIBLE);
+                    t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
+                    one.setChecked(true);
+                    two.setChecked(false);
+                    three.setChecked(false);
+                    four.setChecked(false);
+                    five.setChecked(false);
+                    clicked.switchBoo(1);
+                }
             });
 
 
             two.setOnClickListener(view -> {
-                list.get(position).getChoice(1).addVote();
-                pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
-                pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
-                pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
-                pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
-                pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
-                t1.setVisibility(View.VISIBLE);
-                t2.setVisibility(View.VISIBLE);
-                t3.setVisibility(View.VISIBLE);
-                t4.setVisibility(View.VISIBLE);
-                t5.setVisibility(View.VISIBLE);
-                t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
-                t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
-                t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
-                t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
-                t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
-                two.setChecked(true);
-                three.setChecked(false);
-                four.setChecked(false);
-                five.setChecked(false);
-                one.setChecked(false);
+                if (clicked.isAlreadyClicked()){
+                    if (clicked.getClicked()!=2) {
+                        two.setChecked(false);
+                    }
+                }
+                if (!clicked.isAlreadyClicked()) {
+                    list.get(position).getChoice(1).addVote();
+                    pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
+                    pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
+                    pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
+                    pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
+                    pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                    t1.setVisibility(View.VISIBLE);
+                    t2.setVisibility(View.VISIBLE);
+                    t3.setVisibility(View.VISIBLE);
+                    t4.setVisibility(View.VISIBLE);
+                    t5.setVisibility(View.VISIBLE);
+                    t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
+                    two.setChecked(true);
+                    three.setChecked(false);
+                    four.setChecked(false);
+                    five.setChecked(false);
+                    one.setChecked(false);
+                    clicked.switchBoo(2);
+                }
             });
 
             three.setOnClickListener(view -> {
-                list.get(position).getChoice(2).addVote();
-                pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
-                pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
-                pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
-                pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
-                pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
-                t1.setVisibility(View.VISIBLE);
-                t2.setVisibility(View.VISIBLE);
-                t3.setVisibility(View.VISIBLE);
-                t4.setVisibility(View.VISIBLE);
-                t5.setVisibility(View.VISIBLE);
-                t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
-                t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
-                t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
-                t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
-                t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
-                pThree.setProgress(op3);
-                three.setChecked(true);
-                two.setChecked(false);
-                four.setChecked(false);
-                five.setChecked(false);
-                one.setChecked(false);
+                if (clicked.isAlreadyClicked()){
+                    if (clicked.getClicked()!=3) {
+                        three.setChecked(false);
+                    }
+                }
+                if (!clicked.isAlreadyClicked()) {
+                    list.get(position).getChoice(2).addVote();
+                    pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
+                    pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
+                    pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
+                    pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
+                    pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                    t1.setVisibility(View.VISIBLE);
+                    t2.setVisibility(View.VISIBLE);
+                    t3.setVisibility(View.VISIBLE);
+                    t4.setVisibility(View.VISIBLE);
+                    t5.setVisibility(View.VISIBLE);
+                    t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
+                    three.setChecked(true);
+                    two.setChecked(false);
+                    four.setChecked(false);
+                    five.setChecked(false);
+                    one.setChecked(false);
+                    clicked.switchBoo(3);
+                }
             });
 
             four.setOnClickListener(view -> {
-                list.get(position).getChoice(3).addVote();
-                pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
-                pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
-                pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
-                pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
-                pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
-                t1.setVisibility(View.VISIBLE);
-                t2.setVisibility(View.VISIBLE);
-                t3.setVisibility(View.VISIBLE);
-                t4.setVisibility(View.VISIBLE);
-                t5.setVisibility(View.VISIBLE);
-                t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
-                t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
-                t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
-                t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
-                t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
-                four.setChecked(true);
-                two.setChecked(false);
-                three.setChecked(false);
-                five.setChecked(false);
-                one.setChecked(false);
-
+                if (clicked.isAlreadyClicked()){
+                    if (clicked.getClicked()!=4) {
+                        four.setChecked(false);
+                    }
+                }
+                if (!clicked.isAlreadyClicked()) {
+                    list.get(position).getChoice(3).addVote();
+                    pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
+                    pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
+                    pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
+                    pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
+                    pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                    t1.setVisibility(View.VISIBLE);
+                    t2.setVisibility(View.VISIBLE);
+                    t3.setVisibility(View.VISIBLE);
+                    t4.setVisibility(View.VISIBLE);
+                    t5.setVisibility(View.VISIBLE);
+                    t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
+                    four.setChecked(true);
+                    two.setChecked(false);
+                    three.setChecked(false);
+                    five.setChecked(false);
+                    one.setChecked(false);
+                    clicked.switchBoo(4);
+                }
             });
 
             five.setOnClickListener(view -> {
-
-
-                list.get(position).getChoice(4).addVote();
-                pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
-                pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
-                pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
-                pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
-                pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
-                t1.setVisibility(View.VISIBLE);
-                t2.setVisibility(View.VISIBLE);
-                t3.setVisibility(View.VISIBLE);
-                t4.setVisibility(View.VISIBLE);
-                t5.setVisibility(View.VISIBLE);
-                t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
-                t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
-                t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
-                t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
-                t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
-                five.setChecked(true);
-                two.setChecked(false);
-                three.setChecked(false);
-                four.setChecked(false);
-                one.setChecked(false);
-
+                if (clicked.isAlreadyClicked()){
+                    if (clicked.getClicked()!=5) {
+                        five.setChecked(false);
+                    }
+                }
+                if (!clicked.isAlreadyClicked()) {
+                    list.get(position).getChoice(4).addVote();
+                    pOne.setProgress(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes());
+                    pTwo.setProgress(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes());
+                    pThree.setProgress(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes());
+                    pFour.setProgress(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes());
+                    pFive.setProgress(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes());
+                    t1.setVisibility(View.VISIBLE);
+                    t2.setVisibility(View.VISIBLE);
+                    t3.setVisibility(View.VISIBLE);
+                    t4.setVisibility(View.VISIBLE);
+                    t5.setVisibility(View.VISIBLE);
+                    t1.setText(100 * list.get(position).getChoice(0).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t2.setText(100 * list.get(position).getChoice(1).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t3.setText(100 * list.get(position).getChoice(2).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t4.setText(100 * list.get(position).getChoice(3).getVotes() / list.get(position).getTotalVotes() + "%");
+                    t5.setText(100 * list.get(position).getChoice(4).getVotes() / list.get(position).getTotalVotes() + "%");
+                    five.setChecked(true);
+                    two.setChecked(false);
+                    three.setChecked(false);
+                    four.setChecked(false);
+                    one.setChecked(false);
+                    clicked.switchBoo(5);
+                }
             });
 
 
