@@ -61,15 +61,27 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.025" />
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipethismuthafucka"
-            android:layout_width="408dp"
-            android:layout_height="732dp"
+        <Spinner
+            android:id="@+id/branchSpinner"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.908">
+            app:layout_constraintVertical_bias="0.252" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipethismuthafucka"
+            android:layout_width="413dp"
+            android:layout_height="456dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
             <ListView
                 android:id="@+id/homeListView"
@@ -79,22 +91,12 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="34dp"
                 android:divider="@null"
                 android:padding="10dp"
                 android:paddingTop="10dp">
 
             </ListView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-        <Spinner
-            android:id="@+id/branchSpinner"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
