@@ -92,6 +92,13 @@ public class HomeActivity extends AppCompatActivity {
         swiper_no_swiping = findViewById(R.id.swipethismuthafucka);
 
 
+        swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new GetPostsTask().execute();
+            }
+        });
+
 
         branchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -100,19 +107,6 @@ public class HomeActivity extends AppCompatActivity {
                     title.setBackgroundResource(R.drawable.home);
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, postList);
                     homePostList.setAdapter(adapter);
-                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                        @Override
-                        public void onRefresh() {
-                            for(Post p : postList){
-                                new UpdateVotesTask(p.getUpvotes(),p.getDownvotes(),p.getPostId()).execute();
-                            }
-
-                            homePostList.setAdapter(adapter);
-                            swiper_no_swiping.setRefreshing(false);
-                        }
-                    });
-
-
                 }
 
                 if(position == 1){
@@ -125,16 +119,6 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, policeList);
                     homePostList.setAdapter(adapter);
-                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                        @Override
-                        public void onRefresh() {
-                            for(Post p : policeList){
-                                new UpdateVotesTask(p.getUpvotes(),p.getDownvotes(),p.getPostId()).execute();
-                            }
-                            homePostList.setAdapter(adapter);
-                            swiper_no_swiping.setRefreshing(false);
-                        }
-                    });
 
                 }
 
@@ -148,13 +132,6 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, fireList);
                     homePostList.setAdapter(adapter);
-                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                        @Override
-                        public void onRefresh() {
-                            homePostList.setAdapter(adapter);
-                            swiper_no_swiping.setRefreshing(false);
-                        }
-                    });
 
                 }
 
@@ -168,33 +145,18 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, cityList);
                     homePostList.setAdapter(adapter);
-                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                        @Override
-                        public void onRefresh() {
-                            homePostList.setAdapter(adapter);
-                            swiper_no_swiping.setRefreshing(false);
-                        }
-                    });
                 }
 
                 if(position == 4) {
                     title.setBackgroundResource(R.drawable.education1);
                     ArrayList<Post> eduList = new ArrayList<>();
-                    for(Post p : postList) {
+                    for (Post p : postList) {
                         if (p.getBranch().equals("Education Department")) {
                             eduList.add(p);
                         }
                     }
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, eduList);
                     homePostList.setAdapter(adapter);
-                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                        @Override
-                        public void onRefresh() {
-                            homePostList.setAdapter(adapter);
-                            swiper_no_swiping.setRefreshing(false);
-                        }
-                    });
-
                 }
             }
 
@@ -415,6 +377,61 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             Log.d(TAG, "Added upvotes and downvotes");
+        }
+    }
+
+    class GetPostsTask extends AsyncTask<Void, Void, Void> {
+        private String text;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                HttpClient httpclient = HttpClients.createDefault();
+                HttpGet httpget = new HttpGet("http://73.71.24.214:8008/posts/get.php?all=true");
+
+                //Execute and get the response.
+                HttpResponse response = httpclient.execute(httpget);
+                HttpEntity entity = response.getEntity();
+
+                InputStream inputStream = entity.getContent();
+                text = "";
+                text = IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
+            } catch (Exception e) {
+                Log.d(TAG, "Exception Caught: " + e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Log.d(TAG, text);
+            HomeActivity.postList = new ArrayList<>();
+            String[] posts = text.split("<br>");
+
+            for (int i = 0; i < posts.length; i++) {
+                String[] attributes = posts[i].split("\\|");
+                //System.out.println(Arrays.toString(attributes));
+                HomeActivity.postList.add(new Post(attributes[2], attributes[3], attributes[6], Integer.parseInt(attributes[1]), Integer.parseInt(attributes[0]), Integer.parseInt(attributes[4]), Integer.parseInt(attributes[5])));
+
+                if (i >= LoginActivity.upvoteClicked.size()) {
+                    LoginActivity.upvoteClicked.add(false);
+                }
+
+                if (i >= LoginActivity.downvoteClicked.size()) {
+                    LoginActivity.downvoteClicked.add(false);
+                }
+
+                Collections.sort(HomeActivity.postList, new Comparator<Post>() {
+                    @Override
+                    public int compare(Post o1, Post o2) {
+                        return o2.getTotalVotes() - o1.getTotalVotes();
+                    }
+                });
+            }
+
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 }
