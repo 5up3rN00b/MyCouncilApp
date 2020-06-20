@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.mycouncil.Feedback.Poll;
 import com.example.mycouncil.Feedback.Post;
@@ -56,6 +58,7 @@ public class HomeActivity extends AppCompatActivity {
     ActionBarDrawerToggle abdt;
     ListView homeListView;
     ImageView title;
+    SwipeRefreshLayout swiper_no_swiping;
     public static ArrayList<Post> postList = new ArrayList<>();
     public static ArrayList<Poll> pollList = new ArrayList<com.example.mycouncil.Feedback.Poll>();
 
@@ -175,6 +178,18 @@ public class HomeActivity extends AppCompatActivity {
         d1.addDrawerListener(abdt);
         abdt.syncState();
 
+        swiper_no_swiping = findViewById(R.id.swipethismuthafucka);
+
+        swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+                swiper_no_swiping.setRefreshing(false);
+            }
+        });
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
