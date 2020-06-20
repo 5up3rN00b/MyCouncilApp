@@ -89,6 +89,8 @@ public class HomeActivity extends AppCompatActivity {
 
         ListView homePostList = findViewById(R.id.homeListView);
 
+        swiper_no_swiping = findViewById(R.id.swipethismuthafucka);
+
 
 
         branchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -98,6 +100,15 @@ public class HomeActivity extends AppCompatActivity {
                     title.setBackgroundResource(R.drawable.home);
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, postList);
                     homePostList.setAdapter(adapter);
+                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                        @Override
+                        public void onRefresh() {
+                            homePostList.setAdapter(adapter);
+                            swiper_no_swiping.setRefreshing(false);
+                        }
+                    });
+
+
                 }
 
                 if(position == 1){
@@ -110,6 +121,14 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, policeList);
                     homePostList.setAdapter(adapter);
+                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                        @Override
+                        public void onRefresh() {
+                            homePostList.setAdapter(adapter);
+                            swiper_no_swiping.setRefreshing(false);
+                        }
+                    });
+
                 }
 
                 if(position == 2){
@@ -122,6 +141,14 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, fireList);
                     homePostList.setAdapter(adapter);
+                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                        @Override
+                        public void onRefresh() {
+                            homePostList.setAdapter(adapter);
+                            swiper_no_swiping.setRefreshing(false);
+                        }
+                    });
+
                 }
 
                 if(position == 3){
@@ -134,6 +161,13 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, cityList);
                     homePostList.setAdapter(adapter);
+                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                        @Override
+                        public void onRefresh() {
+                            homePostList.setAdapter(adapter);
+                            swiper_no_swiping.setRefreshing(false);
+                        }
+                    });
                 }
 
                 if(position == 4) {
@@ -146,6 +180,14 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     PostListAdapter adapter = new PostListAdapter(HomeActivity.this, R.layout.listview_layout, eduList);
                     homePostList.setAdapter(adapter);
+                    swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                        @Override
+                        public void onRefresh() {
+                            homePostList.setAdapter(adapter);
+                            swiper_no_swiping.setRefreshing(false);
+                        }
+                    });
+
                 }
             }
 
@@ -178,18 +220,7 @@ public class HomeActivity extends AppCompatActivity {
         d1.addDrawerListener(abdt);
         abdt.syncState();
 
-        swiper_no_swiping = findViewById(R.id.swipethismuthafucka);
 
-        swiper_no_swiping.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-                swiper_no_swiping.setRefreshing(false);
-            }
-        });
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
