@@ -62,6 +62,15 @@ public class SplashActivity extends AppCompatActivity{
 
         new GetUsers().execute();
         new GetPostsTask().execute();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 3000);
     }
 
     class GetUsers extends AsyncTask<Void, Void, Void> {
@@ -97,14 +106,6 @@ public class SplashActivity extends AppCompatActivity{
                 String[] attributes = posts[i].split("\\|");
                 //System.out.println(Arrays.toString(attributes));
                 HomeActivity.idToNameMap.put(Integer.parseInt(attributes[0]), attributes[1]);
-            }
-
-            if (first) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();
-            } else {
-                first = true;
             }
         }
     }
@@ -156,14 +157,6 @@ public class SplashActivity extends AppCompatActivity{
                         return o2.getTotalVotes() - o1.getTotalVotes();
                     }
                 });
-            }
-
-            if (first) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();
-            } else {
-                first = true;
             }
         }
     }
