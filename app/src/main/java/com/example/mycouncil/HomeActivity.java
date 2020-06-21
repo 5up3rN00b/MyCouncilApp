@@ -222,8 +222,6 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     @Override
@@ -269,7 +267,17 @@ public class HomeActivity extends AppCompatActivity {
 
             postTitle.setText(title);
             bodyText.setText(body);
-            pfp.setImageResource(R.drawable.ellipse12);
+            int randomP = (int)(Math.random() * 4) + 1;
+            if(randomP == 1){
+                pfp.setImageResource(R.drawable.ellipse12);
+            } else if(randomP == 2){
+                pfp.setImageResource(R.drawable.mymantropo);
+            } else if(randomP == 3){
+                pfp.setImageResource(R.drawable.elizabeth);
+            } else {
+                pfp.setImageResource(R.drawable.susan);
+            }
+
             name.setText(idToNameMap.get(userID));
 
             branchName.setText(branchNameEnter);
