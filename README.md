@@ -1,3 +1,5 @@
+# MyCouncil Frontend
+
 ## Inspiration
 
 We took inspiration from democratic values and practices.
