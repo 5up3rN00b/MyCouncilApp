@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 HttpClient httpclient = HttpClients.createDefault();
-                HttpPost httppost = new HttpPost("http://73.71.24.214:8008/users/get.php");
+                HttpPost httppost = new HttpPost("http://IP:8008/users/get.php");
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>(5);
                 params.add(new BasicNameValuePair("email", LoginActivity.emailText));
