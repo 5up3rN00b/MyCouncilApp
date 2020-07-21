@@ -130,7 +130,7 @@ public class RegistrationActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 HttpClient httpclient = HttpClients.createDefault();
-                HttpPost httppost = new HttpPost("http://73.71.24.214:8008/users/add.php");
+                HttpPost httppost = new HttpPost("http://IP:8008/users/add.php");
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>(6);
                 params.add(new BasicNameValuePair("zipcode", RegistrationActivity.zipcodeText));
