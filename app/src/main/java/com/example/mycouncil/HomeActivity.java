@@ -359,7 +359,7 @@ public class HomeActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 HttpClient httpclient = HttpClients.createDefault();
-                HttpPost httppost = new HttpPost("http://73.71.24.214:8008/posts/add.php");
+                HttpPost httppost = new HttpPost("http://IP:8008/posts/add.php");
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>(4);
                 params.add(new BasicNameValuePair("updateVotes", "true"));
@@ -395,7 +395,7 @@ public class HomeActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 HttpClient httpclient = HttpClients.createDefault();
-                HttpGet httpget = new HttpGet("http://73.71.24.214:8008/posts/get.php?all=true");
+                HttpGet httpget = new HttpGet("http://IP:8008/posts/get.php?all=true");
 
                 //Execute and get the response.
                 HttpResponse response = httpclient.execute(httpget);
